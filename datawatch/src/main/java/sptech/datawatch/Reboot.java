@@ -10,7 +10,7 @@ public class Reboot {
          */
 
         Runtime runtime = Runtime.getRuntime();
-        Process process = runtime.exec("shutdown -r -t 0 -m \\\\" + remotoPC);
+        Process process = runtime.exec("shutdown -r now \\\\" + remotoPC);
 
         try {
             int codigoDeSaida = process.waitFor();
