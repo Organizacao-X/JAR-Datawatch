@@ -28,15 +28,18 @@ public class Datawatch {
         System.out.println(looca.getProcessador().getFrequencia());
         
         
-        
-        Conversor conversor = new Conversor();
+        // CONVERSOR
         System.out.println(
-        conversor.formatarBytes(looca.getGrupoDeDiscos().getTamanhoTotal()));
+        Conversor.formatarBytes(looca.getGrupoDeDiscos().getTamanhoTotal()));
         System.out.println("Sem conversor:");
         System.out.println(looca.getGrupoDeDiscos().getTamanhoTotal());
         System.out.println(
-        conversor.formatarBytes(looca.getMemoria().getTotal()));
+        Conversor.formatarBytes(looca.getMemoria().getTotal()));
         System.out.println(
-        conversor.formatarBytes(looca.getProcessador().getFrequencia()));
+        Conversor.formatarBytes(looca.getProcessador().getFrequencia()));
+        
+        //MAC
+        Mac mac = new Mac();
+        System.out.printf("MAC: %s", mac.getMac());
     }
 }
