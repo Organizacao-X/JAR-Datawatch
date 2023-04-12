@@ -27,10 +27,16 @@ public class Datawatch {
         System.out.println(looca.getRede());
         System.out.println(looca.getProcessador().getFrequencia());
         
+        
+        
         Conversor conversor = new Conversor();
         System.out.println(
         conversor.formatarBytes(looca.getGrupoDeDiscos().getTamanhoTotal()));
+        System.out.println("Sem conversor:");
+        System.out.println(looca.getGrupoDeDiscos().getTamanhoTotal());
         System.out.println(
         conversor.formatarBytes(looca.getMemoria().getTotal()));
+        System.out.println(
+        conversor.formatarBytes(looca.getProcessador().getFrequencia()));
     }
 }

@@ -12,9 +12,9 @@ public class Conexao {
         BasicDataSource dataSource = new BasicDataSource();
 
         dataSource​.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource​.setUrl("jdbc:mysql://localhost:3306/datawatch");
+        dataSource​.setUrl("jdbc:mysql://localhost:3306/datawatch?serverTimezone=UTC");
         dataSource​.setUsername("root");
-        dataSource​.setPassword("Almanaque2023!");
+        dataSource​.setPassword("252525");
 
         this.connection = new JdbcTemplate(dataSource);
     }

@@ -122,7 +122,7 @@ private Timer timer;
         lblLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblLogin.setForeground(new java.awt.Color(0, 0, 0));
         lblLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLogin.setIcon(new javax.swing.ImageIcon("/home/leone/NetBeansProjects/datawatch/src/main/java/images/LOGOcomtexto_V3.png")); // NOI18N
+        lblLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\nyron\\Desktop\\PROJETO DATAWATCH\\JAR-Datawatch\\datawatch\\src\\main\\java\\images\\LOGOcomtexto_V3.png")); // NOI18N
         lblLogin.setToolTipText("");
 
         javax.swing.GroupLayout pnlTituloLayout = new javax.swing.GroupLayout(pnlTitulo);
