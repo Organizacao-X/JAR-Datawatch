@@ -2,13 +2,14 @@ package sptech.datawatch;
 
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.util.Conversor;
+import java.io.IOException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import tabelas.Usuarios;
 import login.TelaLogin;
 
 public class Datawatch {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
            
         // AQUI A GENTE CRIA CONEXAO COM O BANCO DE DADOS 
         // CONFIGURADO NO CONEXAO.JAVA
@@ -28,6 +29,7 @@ public class Datawatch {
         System.out.println(looca.getProcessador().getFrequencia());
         
         
+        
         // CONVERSOR
         System.out.println(
         Conversor.formatarBytes(looca.getGrupoDeDiscos().getTamanhoTotal()));
@@ -38,8 +40,15 @@ public class Datawatch {
         System.out.println(
         Conversor.formatarBytes(looca.getProcessador().getFrequencia()));
         
-        //MAC
+        //MAC e IP
         Mac mac = new Mac();
         System.out.printf("MAC: %s", mac.getMac());
+        
+        Ip ip = new Ip();
+        System.out.printf("\nIP: %s",ip.getIp());
+        
+        //REBOOT
+        Reboot re = new Reboot();
+        //re.rebootar(ip.getIp());
     }
 }
