@@ -11,10 +11,11 @@ import sptech.datawatch.Conexao;
 import tabelas.Usuarios;
 
 public class TelaLogin extends javax.swing.JFrame {
-private Timer timer;
+
+    private Timer tempo;
+
     public TelaLogin() {
         initComponents();
-        
 
     }
 
@@ -187,15 +188,17 @@ private Timer timer;
     }//GEN-LAST:event_inputEmailActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-timer = new Timer(3000, new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        dispose();
-    }
-});
-timer.setRepeats(false);
-        
-        
+        tempo = new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SistemaDatawatch sisDat = new SistemaDatawatch();
+
+                sisDat.setVisible(true);
+                dispose();
+            }
+        });
+        tempo.setRepeats(false);
+
         // TODO add your handling code here:
         String email = inputEmail.getText();
         String senha = inputSenha.getText();
@@ -220,7 +223,7 @@ timer.setRepeats(false);
             lblMensagem.setText("Login realizado com sucesso! Conectando...");
             System.out.println(listaDeUsuarios.get(0).getEmail());
             // Inicia o timer para fechar a janela após 3 segundos
-            timer.start();
+            tempo.start();
         } else {
             // A lista está vazia, tratamento de erro aqui
             lblMensagem.setText("USUÁRIO E/OU SENHA INVÁLIDO!");
