@@ -9,6 +9,7 @@ import com.github.britooo.looca.api.util.Conversor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import sptech.datawatch.Ip;
 
 /**
  *
@@ -17,12 +18,13 @@ import javax.swing.Timer;
 public class SistemaDatawatch extends javax.swing.JFrame {
 
     private Timer timer;
+
     /**
      * Creates new form SistemaDatawatch
      */
     public SistemaDatawatch() {
         initComponents();
-        
+
     }
 
     /**
@@ -39,6 +41,8 @@ public class SistemaDatawatch extends javax.swing.JFrame {
         lblUsoMemoriaRam = new javax.swing.JLabel();
         lblCapMemoriaRam = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        lblIp = new javax.swing.JLabel();
+        lblCapIp = new javax.swing.JLabel();
         btnComecar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,15 +89,31 @@ public class SistemaDatawatch extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(24, 24, 24));
 
+        lblIp.setForeground(new java.awt.Color(255, 255, 255));
+        lblIp.setText("IP:");
+
+        lblCapIp.setForeground(new java.awt.Color(255, 255, 255));
+        lblCapIp.setText("-------------");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 352, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblIp)
+                .addGap(55, 55, 55)
+                .addComponent(lblCapIp, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblIp)
+                    .addComponent(lblCapIp))
+                .addGap(19, 19, 19))
         );
 
         btnComecar.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
@@ -137,19 +157,20 @@ public class SistemaDatawatch extends javax.swing.JFrame {
 
     private void btnComecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComecarActionPerformed
         // TODO add your handling code here:
-                Looca looca = new Looca();
-                timer = new Timer(3000, new ActionListener() {
-                    
+        Looca looca = new Looca();
+        timer = new Timer(500, new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
-        
+                Ip ip = new Ip();
                 lblCapMemoriaRam.setText(Conversor.formatarBytes(looca.getMemoria().getEmUso()));
+                lblCapIp.setText(ip.getIp());
                 System.out.println("opa");
-                
+
             }
         });
         timer.setRepeats(true);
-        
+
         timer.start();
     }//GEN-LAST:event_btnComecarActionPerformed
 
@@ -192,7 +213,9 @@ public class SistemaDatawatch extends javax.swing.JFrame {
     private javax.swing.JButton btnComecar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblCapIp;
     private javax.swing.JLabel lblCapMemoriaRam;
+    private javax.swing.JLabel lblIp;
     private javax.swing.JLabel lblTituloCapturas;
     private javax.swing.JLabel lblUsoMemoriaRam;
     // End of variables declaration//GEN-END:variables
