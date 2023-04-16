@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import tabelas.Usuarios;
 import login.TelaLogin;
+import java.time.Instant;
 
 public class Datawatch {
 
@@ -25,9 +26,22 @@ public class Datawatch {
         Looca looca = new Looca();
         System.out.println(looca.getSistema());
         System.out.println(looca.getSistema().getInicializado());
-        System.out.println(looca.getRede());
+        
+        //REDE
+        System.out.println("REDE AQUI:");
+        System.out.println(looca.getRede().getGrupoDeInterfaces());
+        System.out.println(looca.getRede().getParametros());
+        System.out.println(looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0));
+        
+        
         System.out.println(looca.getProcessador().getFrequencia());
         
+        
+        // DISCOS DESCRITOS
+        System.out.println("DISCOS AQUI:");
+        for (int i = 0; i < looca.getGrupoDeDiscos().getQuantidadeDeDiscos(); i++) {  
+        System.out.println(looca.getGrupoDeDiscos().getDiscos().get(i));
+        }
         
         
         // CONVERSOR
@@ -39,6 +53,9 @@ public class Datawatch {
         Conversor.formatarBytes(looca.getMemoria().getTotal()));
         System.out.println(
         Conversor.formatarBytes(looca.getProcessador().getFrequencia()));
+        System.out.println(
+        Conversor.formatarSegundosDecorridos(looca.getSistema().getTempoDeAtividade()));
+        System.out.println(looca.getSistema().getTempoDeAtividade());
         
         //MAC e IP
         Mac mac = new Mac();
@@ -50,5 +67,7 @@ public class Datawatch {
         //REBOOT
         Reboot re = new Reboot();
         //re.rebootar(ip.getIp());
+        
+      
     }
 }
