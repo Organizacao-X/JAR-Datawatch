@@ -31,14 +31,26 @@ public class Datawatch {
         System.out.println("REDE AQUI:");
         System.out.println(looca.getRede().getGrupoDeInterfaces());
         System.out.println(looca.getRede().getParametros());
-        System.out.println(looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0));
+        for (int i = 0; i < looca.getRede().getGrupoDeInterfaces().getInterfaces().size(); i++) {
+            
+        System.out.println(looca.getRede().getGrupoDeInterfaces().getInterfaces().get(i).getEnderecoIpv4());
+        }
         
         
+        //PROCESSADOR
+        System.out.println("PROCESSADOR AQUI:");
         System.out.println(looca.getProcessador().getFrequencia());
+        System.out.println(looca.getProcessador().getIdentificador());
+        System.out.println(looca.getProcessador());
         
+        // MEMORIA RAM
+        System.out.println(looca.getMemoria());
         
         // DISCOS DESCRITOS
-        System.out.println("DISCOS AQUI:");
+        System.out.println("\nDISCOS AQUI:");
+            System.out.println("Quantidade de discos:");
+            System.out.println(looca.getGrupoDeDiscos().getQuantidadeDeDiscos());
+            
         for (int i = 0; i < looca.getGrupoDeDiscos().getQuantidadeDeDiscos(); i++) {  
         System.out.println(looca.getGrupoDeDiscos().getDiscos().get(i));
         }
@@ -66,7 +78,7 @@ public class Datawatch {
         
         //REBOOT
         Reboot re = new Reboot();
-        //re.rebootar(ip.getIp());
+        //re.rebootar("10.0.0.108");
         
       
     }
