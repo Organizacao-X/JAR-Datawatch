@@ -27,7 +27,35 @@ public class SistemaDatawatch extends javax.swing.JFrame {
     public SistemaDatawatch() {
         initComponents();
         setTitle("DATAWATCH - Sistema");
+        Looca looca = new Looca();
+        lblCapRamTotal.setText(String.format("%s", Conversor.formatarBytes(looca.getMemoria().getTotal())));
+        
+        ArrayList<JLabel> labels = new ArrayList<JLabel>();
+        labels.add(lblCapQtdDisco1);
+        labels.add(lblCapQtdDisco2);
+        labels.add(lblCapQtdDisco3);
+            for (int i = 0; i < looca.getGrupoDeDiscos().getQuantidadeDeDiscos(); i++) {
+            labels.get(i).setText(String.format(
+                    "Total: %s Livre: %s", 
+                    Conversor.formatarBytes(looca.getGrupoDeDiscos().getDiscos().get(i).getTamanho()),
+                    Conversor.formatarBytes(looca.getGrupoDeDiscos().getVolumes().get(i).getDisponivel())));
+            
+    }
+            lblInfo.setText("Capturando dados!");
+        timer = new Timer(500, new ActionListener() {
 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Ip ip = new Ip();
+                lblCapMemoriaRam.setText(Conversor.formatarBytes(looca.getMemoria().getEmUso()));
+                lblCapIp.setText(ip.getIp());
+                lblCapCpu.setText(String.format("%.2f%% de uso", looca.getProcessador().getUso()));
+
+            }
+        });
+        timer.setRepeats(true);
+
+        timer.start();
     }
 
     /**
@@ -63,7 +91,6 @@ public class SistemaDatawatch extends javax.swing.JFrame {
         lblQtdDisco3 = new javax.swing.JLabel();
         lblCapQtdDisco2 = new javax.swing.JLabel();
         lblCapQtdDisco3 = new javax.swing.JLabel();
-        btnComecar = new javax.swing.JButton();
         lblInfo = new javax.swing.JLabel();
 
         lblUsoMemoriaRam4.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,7 +170,7 @@ public class SistemaDatawatch extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(180, 278, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblIp)
                         .addGap(42, 42, 42)
                         .addComponent(lblCapIp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,7 +200,7 @@ public class SistemaDatawatch extends javax.swing.JFrame {
                             .addComponent(lblQtdDisco1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCapQtdDisco2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblCapQtdDisco2, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                             .addComponent(lblCapQtdDisco3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblCapQtdDisco1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(22, 22, 22))
@@ -208,14 +235,7 @@ public class SistemaDatawatch extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        btnComecar.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
-        btnComecar.setText("COMEÇAR CAPTURA");
-        btnComecar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnComecarActionPerformed(evt);
-            }
-        });
-
+        lblInfo.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         lblInfo.setForeground(new java.awt.Color(0, 0, 0));
         lblInfo.setText("---------------");
 
@@ -223,24 +243,20 @@ public class SistemaDatawatch extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lblInfo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnComecar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnComecar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblInfo))
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(lblInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -250,7 +266,7 @@ public class SistemaDatawatch extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,39 +275,6 @@ public class SistemaDatawatch extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnComecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComecarActionPerformed
-        // TODO add your handling code here:
-        Looca looca = new Looca();
-        lblCapRamTotal.setText(String.format("%s", Conversor.formatarBytes(looca.getMemoria().getTotal())));
-        
-        ArrayList<JLabel> labels = new ArrayList<JLabel>();
-        labels.add(lblCapQtdDisco1);
-        labels.add(lblCapQtdDisco2);
-        labels.add(lblCapQtdDisco3);
-            for (int i = 0; i < looca.getGrupoDeDiscos().getQuantidadeDeDiscos(); i++) {
-            labels.get(i).setText(String.format(
-                    "Total: %s Livre: %s", 
-                    Conversor.formatarBytes(looca.getGrupoDeDiscos().getDiscos().get(i).getTamanho()),
-                    Conversor.formatarBytes(looca.getGrupoDeDiscos().getVolumes().get(i).getDisponivel())));
-            
-    }
-            lblInfo.setText("Capturando dados!");
-        timer = new Timer(500, new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Ip ip = new Ip();
-                lblCapMemoriaRam.setText(Conversor.formatarBytes(looca.getMemoria().getEmUso()));
-                lblCapIp.setText(ip.getIp());
-                lblCapCpu.setText(String.format("%.2f%% de uso", looca.getProcessador().getUso()));
-
-            }
-        });
-        timer.setRepeats(true);
-
-        timer.start();
-    }//GEN-LAST:event_btnComecarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,7 +312,6 @@ public class SistemaDatawatch extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnComecar;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
