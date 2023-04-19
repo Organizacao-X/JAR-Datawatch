@@ -4,15 +4,13 @@ public class Possuem {
 
     private Integer idPosse;
     private Integer fkEmpresa;
-    private Integer fkUsuario;
     private Integer fkAlerta;
     private Integer fkMaquina;
     private Integer dataHora;
 
-    public Possuem(Integer idPosse, Integer fkEmpresa, Integer fkUsuario, Integer fkAlerta, Integer fkMaquina, Integer dataHora) {
+    public Possuem(Integer idPosse, Integer fkEmpresa, Integer fkAlerta, Integer fkMaquina, Integer dataHora) {
         this.idPosse = idPosse;
         this.fkEmpresa = fkEmpresa;
-        this.fkUsuario = fkUsuario;
         this.fkAlerta = fkAlerta;
         this.fkMaquina = fkMaquina;
         this.dataHora = dataHora;
@@ -36,14 +34,6 @@ public class Possuem {
 
     public void setFkEmpresa(Integer fkEmpresa) {
         this.fkEmpresa = fkEmpresa;
-    }
-
-    public Integer getFkUsuario() {
-        return fkUsuario;
-    }
-
-    public void setFkUsuario(Integer fkUsuario) {
-        this.fkUsuario = fkUsuario;
     }
 
     public Integer getFkAlerta() {
@@ -72,7 +62,7 @@ public class Possuem {
 
     @Override
     public String toString() {
-        return "Possuem{" + "idPosse=" + idPosse + ", fkEmpresa=" + fkEmpresa + ", fkUsuario=" + fkUsuario + ", fkAlerta=" + fkAlerta + ", fkMaquina=" + fkMaquina + ", dataHora=" + dataHora + '}';
+        return "Possuem{" + "idPosse=" + idPosse + ", fkEmpresa=" + fkEmpresa + "fkAlerta=" + fkAlerta + ", fkMaquina=" + fkMaquina + ", dataHora=" + dataHora + '}';
     }
 
 }
