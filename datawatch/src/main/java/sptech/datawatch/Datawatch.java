@@ -48,11 +48,14 @@ public class Datawatch {
         
         // DISCOS DESCRITOS
         System.out.println("\nDISCOS AQUI:");
+        
             System.out.println("Quantidade de discos:");
             System.out.println(looca.getGrupoDeDiscos().getQuantidadeDeDiscos());
             
         for (int i = 0; i < looca.getGrupoDeDiscos().getQuantidadeDeDiscos(); i++) {  
         System.out.println(looca.getGrupoDeDiscos().getDiscos().get(i));
+        System.out.println(String.format(
+                        "%s Livres", Conversor.formatarBytes(looca.getGrupoDeDiscos().getVolumes().get(i).getDisponivel())));
         }
         
         

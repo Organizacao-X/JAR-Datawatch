@@ -75,10 +75,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel3" min="-2" pref="562" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -100,13 +97,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel1" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="437" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="330" max="-2" attributes="0"/>
-                  <Component id="btnComecar" min="-2" pref="210" max="-2" attributes="0"/>
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="lblInfo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnComecar" min="-2" pref="210" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -114,7 +113,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="11" max="32767" attributes="0"/>
-                  <Component id="btnComecar" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnComecar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="lblInfo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -134,59 +136,52 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblUsoMemoriaRam" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblQtdDisco" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="180" pref="278" max="32767" attributes="0"/>
+                              <Component id="lblIp" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblCapQtdDisco" min="-2" pref="92" max="-2" attributes="0"/>
-                                  <Component id="lblCapMemoriaRam" min="-2" pref="92" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lblCapIp" min="-2" pref="113" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblUsoCpu" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblUsoMemoriaRam3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblCapMemoriaRam3" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
-                                  <Component id="lblCapCpu" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                              <Component id="lblTituloCapturas" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblUsoMemoriaRam8" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="lblCapMemoriaRam6" min="-2" pref="92" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblUsoMemoriaRam7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblUsoMemoriaRam6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblCapMemoriaRam7" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblCapMemoriaRam8" min="-2" pref="92" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="lblIp" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                      <Component id="lblCapIp" min="-2" pref="181" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                      <Component id="lblCapRamTotal" min="-2" pref="92" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="lblUsoMemoriaRam" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                          <Component id="lblCapMemoriaRam" min="-2" pref="92" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
+                                  <Component id="lblRamTotal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblUsoCpu" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="lblCapCpu" min="-2" pref="92" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblQtdDisco3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblQtdDisco2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblQtdDisco1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblCapQtdDisco2" max="32767" attributes="0"/>
+                                  <Component id="lblCapQtdDisco3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblCapQtdDisco1" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-                      <Component id="lblTituloCapturas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -195,44 +190,33 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="lblTituloCapturas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblQtdDisco1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCapQtdDisco1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRamTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCapRamTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblUsoMemoriaRam" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCapMemoriaRam" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblQtdDisco2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCapQtdDisco2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblQtdDisco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCapQtdDisco" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblQtdDisco3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCapQtdDisco3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblUsoCpu" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCapCpu" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblUsoMemoriaRam3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCapMemoriaRam3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblUsoMemoriaRam8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCapMemoriaRam6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblUsoMemoriaRam7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCapMemoriaRam7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblUsoMemoriaRam6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCapMemoriaRam8" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblIp" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCapIp" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -265,20 +249,20 @@
                 <Property name="text" type="java.lang.String" value="-------------"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblQtdDisco">
+            <Component class="javax.swing.JLabel" name="lblQtdDisco1">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Numero de discos"/>
+                <Property name="text" type="java.lang.String" value="Disco 1"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblCapQtdDisco">
+            <Component class="javax.swing.JLabel" name="lblCapQtdDisco1">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="-------------"/>
+                <Property name="text" type="java.lang.String" value="------------"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblUsoCpu">
@@ -290,70 +274,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCapCpu">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="-------------"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblUsoMemoriaRam3">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Uso mem&#xf3;ria RAM:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCapMemoriaRam3">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="-------------"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblUsoMemoriaRam6">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Uso mem&#xf3;ria RAM:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblUsoMemoriaRam7">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Uso mem&#xf3;ria RAM:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblUsoMemoriaRam8">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Uso mem&#xf3;ria RAM:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCapMemoriaRam6">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="-------------"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCapMemoriaRam7">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="-------------"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCapMemoriaRam8">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -377,6 +297,54 @@
                 <Property name="text" type="java.lang.String" value="-------------"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="lblRamTotal">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="RAM Total"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCapRamTotal">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="-------------"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblQtdDisco2">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Disco 2"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblQtdDisco3">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Disco 3"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCapQtdDisco2">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="------------"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCapQtdDisco3">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="------------"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JButton" name="btnComecar">
@@ -389,6 +357,14 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnComecarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblInfo">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="---------------"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
