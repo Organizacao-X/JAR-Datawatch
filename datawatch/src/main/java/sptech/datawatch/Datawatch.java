@@ -33,7 +33,7 @@ public class Datawatch {
         System.out.println(looca.getRede().getParametros());
         for (int i = 0; i < looca.getRede().getGrupoDeInterfaces().getInterfaces().size(); i++) {
             
-        System.out.println(looca.getRede().getGrupoDeInterfaces().getInterfaces().get(i).getEnderecoIpv4());
+        System.out.println(looca.getRede().getGrupoDeInterfaces().getInterfaces().get(i));
         }
         
         
