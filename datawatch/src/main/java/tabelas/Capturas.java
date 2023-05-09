@@ -113,7 +113,17 @@ public class Capturas {
 
     @Override
     public String toString() {
-        return "Capturas{" + "idCaptura=" + idCaptura + ", fkMaquina=" + fkMaquina + ", fkEmpresa=" + fkEmpresa + ", dataHora=" + dataHora + ", cpuUso=" + cpuUso + ", temperatura=" + temperatura + ", ramUso=" + ramUso + ", redeUpload=" + redeUpload + ", redeDownload=" + redeDownload + ", discoLivre=" + discoLivre + '}';
+        return String.format("\n\n-=-=-=-=-=-=-=-=-=-=-"
+                + "\nidCaptura: %d"
+                + "\nfkMaquina: %d"
+                + "\nfkEmpresa: %d"
+                + "\ndataHora: %s"
+                + "\ncpuUso: %.2f"
+                + "\ntemperatura: %.2f"
+                + "\nramUso: %.2f"
+                + "\nredeUpload: %.2f"
+                + "\nredeDownload: %.2f"
+                + "\ndiscoLivre: %.2f", idCaptura, fkMaquina, fkEmpresa, dataHora, cpuUso, temperatura, ramUso, redeUpload, redeDownload, discoLivre);
     }
     
     

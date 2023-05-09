@@ -3,7 +3,7 @@ package sptech.datawatch;
 import java.net.*;
 
 public class Ip {
-  public String getIp() {
+  public static String getIp() {
     try {
       InetAddress ip = InetAddress.getLocalHost();
       return ip.getHostAddress();

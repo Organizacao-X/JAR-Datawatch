@@ -1,13 +1,16 @@
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/tabelas/Maquinas.java
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/login/TelaLogin.java
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/sptech/datawatch/Reboot.java
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/tabelas/Usuarios.java
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/tabelas/Alertas.java
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/sptech/datawatch/Mac.java
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/sptech/datawatch/Datawatch.java
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/login/SistemaDatawatch.java
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/tabelas/Capturas.java
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/sptech/datawatch/Ip.java
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/tabelas/Empresas.java
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/sptech/datawatch/Conexao.java
-/home/leone/Área de Trabalho/PROJETO-DATAWATCH/JAR-Datawatch/datawatch/src/main/java/tabelas/Possuem.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/inserts/Inserts.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/sptech/datawatch/Conexao.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/tabelas/Maquinas.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/tabelas/Alertas.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/tabelas/Possuem.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/sptech/datawatch/Reboot.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/hardwares/DatawatchDiscos.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/login/SistemaDatawatch.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/tabelas/Empresas.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/login/TelaLogin.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/tabelas/Usuarios.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/sptech/datawatch/Format.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/sptech/datawatch/Datawatch.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/tabelas/Capturas.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/sptech/datawatch/Ip.java
+/home/victor/Faculdade/2sem/PI/JAR-Datawatch/datawatch/src/main/java/sptech/datawatch/Mac.java

@@ -43,14 +43,13 @@ public class SistemaDatawatch extends javax.swing.JFrame {
     }
             lblInfo.setText("Capturando dados!");
         timer = new Timer(500, new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 Ip ip = new Ip();
                 lblCapMemoriaRam.setText(Conversor.formatarBytes(looca.getMemoria().getEmUso()));
                 lblCapIp.setText(ip.getIp());
                 lblCapCpu.setText(String.format("%.2f%% de uso", looca.getProcessador().getUso()));
-
+                
             }
         });
         timer.setRepeats(true);

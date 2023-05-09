@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.Timer;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import sptech.datawatch.Conexao;
 import tabelas.Usuarios;
 
@@ -212,7 +213,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         // AQUI PEGA O ENDEREÇO DE CONEXAO E USA O TEMPLATE PRA ACESSAR
         conexao.getConnection();
-
+        
         List<Usuarios> listaDeUsuarios = new ArrayList();
 
         listaDeUsuarios = con.query("select * from Usuarios where email = ? and senha = ?",
