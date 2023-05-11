@@ -14,7 +14,10 @@ import com.github.britooo.looca.api.group.rede.Rede;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
 import com.github.britooo.looca.api.util.Conversor;
 import hardwares.DatawatchDiscos;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import sptech.datawatch.Format;
 import sptech.datawatch.Ip;
@@ -25,17 +28,19 @@ import sptech.datawatch.Ip;
  */
 public class Inserts {
     
-    public static void inserirCaptura(JdbcTemplate con, Integer fkMaquina, Integer fkEmpresa, Double cpuUso,
+    public static void inserirCaptura(JdbcTemplate conAzure, JdbcTemplate conMysql, Integer fkMaquina, Integer fkEmpresa, Double cpuUso,
             Double ramUso, Double redeUpload, Double redeDownload, Double discoLivre, Double discoLivre2, Double discoLivre3) {
         if (fkMaquina == null || fkEmpresa == null || cpuUso == null || ramUso == null || redeUpload == null || redeDownload == null || discoLivre == null) {
             System.out.println("Dados inválidos. Não foi possível realizar o INSERT");
         } else {
-            con.update("INSERT INTO Capturas (fkMaquina, fkEmpresa, dataHora, cpuUso, temperatura, ramUso, redeUpload, redeDownload, LivreDisco1, LivreDisco2, LivreDisco3) VALUES"
+            conMysql.update("INSERT INTO Capturas (idCaptura, fkMaquina, fkEmpresa, dataHora, cpuUso, temperatura, ramUso, redeUpload, redeDownload, LivreDisco1, LivreDisco2, LivreDisco3) VALUES"
+                    + "(null, ?, ?, CURRENT_TIMESTAMP, TRUNCATE(?, 2), 42.0, ?, ?, ?, ?, null, null)", fkMaquina, fkEmpresa, cpuUso, ramUso, redeUpload, redeDownload, discoLivre);
+            conAzure.update("INSERT INTO Capturas (fkMaquina, fkEmpresa, dataHora, cpuUso, temperatura, ramUso, redeUpload, redeDownload, LivreDisco1, LivreDisco2, LivreDisco3) VALUES"
                     + "(?, ?, CURRENT_TIMESTAMP, CAST(ROUND(?, 2, 1) AS FLOAT), 42.0, ?, ?, ?, ?, null, null)", fkMaquina, fkEmpresa, cpuUso, ramUso, redeUpload, redeDownload, discoLivre);
         }
     }
 
-    public static void inserirDadosMaquinaEstatico(JdbcTemplate con, Looca looca) {
+    public static void inserirDadosMaquinaEstatico(JdbcTemplate conAzure, JdbcTemplate conMysql, Looca looca) {
 
         // DADOS MAQUINA
         Integer fkEmpresa = 1;
@@ -99,7 +104,21 @@ public class Inserts {
 //        System.out.println(ramMetrica);
 //        System.out.println(tempoAtividade);
         
-        con.update("INSERT INTO Maquinas ("
+//        conAzure.update("INSERT INTO Maquinas ("
+//                + "fkEmpresa, nomeMaquina, serie, dtChegada, sistemaOperacional, "
+//                + "processador, ram, nomeDisco1, nomeDisco2, nomeDisco3, "
+//                + "ip, statusSistema, cpuFrequencia, ramTotal, totalDisco1, "
+//                + "totalDisco2, totalDisco3, cpuMetrica, ramMetrica, gatilhoDisco1, "
+//                + "gatilhoDisco2, gatilhoDisco3, tempoAtividade) VALUES"
+//                + "(?, ?, ?, CURRENT_DATE, ?, "
+//                + "?, ?, ?, ?, ?, "
+//                + "?, ?, TRUNCATE(?, 2), ?, ?, "
+//                + "?, ?, ?, ?, ?, "
+//                + "?, ?, ?);",
+//                fkEmpresa, nomeMaquina, serie, sistemaOperacional, processador, ram, nomeDisco1, nomeDisco2, nomeDisco3, ip, statusSistema, cpuFrequencia,
+//                ramTotal, totalDisco1, totalDisco2, totalDisco3, cpuMetrica, ramMetrica, gatilhoDisco1, gatilhoDisco2, gatilhoDisco3, tempoAtividade);
+        
+        conMysql.update("INSERT INTO Maquinas ("
                 + "fkEmpresa, nomeMaquina, serie, dtChegada, sistemaOperacional, "
                 + "processador, ram, nomeDisco1, nomeDisco2, nomeDisco3, "
                 + "ip, statusSistema, cpuFrequencia, ramTotal, totalDisco1, "
@@ -112,6 +131,5 @@ public class Inserts {
                 + "?, ?, ?);",
                 fkEmpresa, nomeMaquina, serie, sistemaOperacional, processador, ram, nomeDisco1, nomeDisco2, nomeDisco3, ip, statusSistema, cpuFrequencia,
                 ramTotal, totalDisco1, totalDisco2, totalDisco3, cpuMetrica, ramMetrica, gatilhoDisco1, gatilhoDisco2, gatilhoDisco3, tempoAtividade);
-        
     }
 }

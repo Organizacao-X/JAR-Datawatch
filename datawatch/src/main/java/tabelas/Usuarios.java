@@ -11,8 +11,9 @@ public class Usuarios {
     private String imagemUser;
     private Integer adm;
     private Integer fkEmpresa;
+    private String uuid;
 
-    public Usuarios(Integer idUsuario, String nomeUsuario, String email, Long cpf, String senha, Boolean statusUsuario, String imagemUser, Integer adm, Integer fkEmpresa) {
+    public Usuarios(Integer idUsuario, String nomeUsuario, String email, Long cpf, String senha, Boolean statusUsuario, String imagemUser, Integer adm, Integer fkEmpresa, String uuid) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
         this.email = email;
@@ -22,7 +23,10 @@ public class Usuarios {
         this.imagemUser = imagemUser;
         this.adm = adm;
         this.fkEmpresa = fkEmpresa;
+        this.uuid = uuid;
     }
+    
+    
     
         public Usuarios() {
         

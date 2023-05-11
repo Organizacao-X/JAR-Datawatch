@@ -206,18 +206,18 @@ public class TelaLogin extends javax.swing.JFrame {
 
         // AQUI A GENTE CRIA CONEXAO COM O BANCO DE DADOS 
         // CONFIGURADO NO CONEXAO.JAVA
-        Conexao conexao = new Conexao();
+//        Conexao conexao = new Conexao();
 
         // ESSE CON SEMPRE VAMOS USAR PRA DAR COMANDOS NO BANCO
-        JdbcTemplate con = conexao.getConnection();
+//        JdbcTemplate con = conexao.getConnection();
 
         // AQUI PEGA O ENDEREÇO DE CONEXAO E USA O TEMPLATE PRA ACESSAR
-        conexao.getConnection();
+//        conexao.getConnection();
         
         List<Usuarios> listaDeUsuarios = new ArrayList();
 
-        listaDeUsuarios = con.query("select * from Usuarios where email = ? and senha = ?",
-                new BeanPropertyRowMapper(Usuarios.class), email, senha);
+//        listaDeUsuarios = con.query("select * from Usuarios where email = ? and senha = ?",
+//                new BeanPropertyRowMapper(Usuarios.class), email, senha);
 
         if (!listaDeUsuarios.isEmpty()) {
             // A lista não está vazia, podemos acessar o primeiro elemento

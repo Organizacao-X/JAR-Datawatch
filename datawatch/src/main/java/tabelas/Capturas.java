@@ -13,9 +13,11 @@ public class Capturas {
     private Double ramUso;
     private Double redeUpload;
     private Double redeDownload;
-    private Double discoLivre;
+    private Double LivreDisco1;
+    private Double LivreDisco2;
+    private Double LivreDisco3;
 
-    public Capturas(Integer idCaptura, Integer fkMaquina, Integer fkEmpresa, Date dataHora, Double cpuUso, Double temperatura, Double ramUso, Double redeUpload, Double redeDownload, Double discoLivre) {
+    public Capturas(Integer idCaptura, Integer fkMaquina, Integer fkEmpresa, Date dataHora, Double cpuUso, Double temperatura, Double ramUso, Double redeUpload, Double redeDownload, Double LivreDisco1, Double LivreDisco2, Double LivreDisco3) {
         this.idCaptura = idCaptura;
         this.fkMaquina = fkMaquina;
         this.fkEmpresa = fkEmpresa;
@@ -25,8 +27,12 @@ public class Capturas {
         this.ramUso = ramUso;
         this.redeUpload = redeUpload;
         this.redeDownload = redeDownload;
-        this.discoLivre = discoLivre;
+        this.LivreDisco1 = LivreDisco1;
+        this.LivreDisco2 = LivreDisco2;
+        this.LivreDisco3 = LivreDisco3;
     }
+
+   
 
     public Capturas() {
     }
@@ -103,12 +109,28 @@ public class Capturas {
         this.redeDownload = redeDownload;
     }
 
-    public Double getDiscoLivre() {
-        return discoLivre;
+    public Double getLivreDisco1() {
+        return LivreDisco1;
     }
 
-    public void setDiscoLivre(Double discoLivre) {
-        this.discoLivre = discoLivre;
+    public void setLivreDisco1(Double LivreDisco1) {
+        this.LivreDisco1 = LivreDisco1;
+    }
+
+    public Double getLivreDisco2() {
+        return LivreDisco2;
+    }
+
+    public void setLivreDisco2(Double LivreDisco2) {
+        this.LivreDisco2 = LivreDisco2;
+    }
+
+    public Double getLivreDisco3() {
+        return LivreDisco3;
+    }
+
+    public void setLivreDisco3(Double LivreDisco3) {
+        this.LivreDisco3 = LivreDisco3;
     }
 
     @Override
@@ -123,7 +145,9 @@ public class Capturas {
                 + "\nramUso: %.2f"
                 + "\nredeUpload: %.2f"
                 + "\nredeDownload: %.2f"
-                + "\ndiscoLivre: %.2f", idCaptura, fkMaquina, fkEmpresa, dataHora, cpuUso, temperatura, ramUso, redeUpload, redeDownload, discoLivre);
+                + "\nLivreDisco1: %.2f"
+                + "\nLivreDisco2: %.2f"
+                + "\nLivreDisco3: %.2f", idCaptura, fkMaquina, fkEmpresa, dataHora, cpuUso, temperatura, ramUso, redeUpload, redeDownload, LivreDisco1, LivreDisco2, LivreDisco3);
     }
     
     

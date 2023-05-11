@@ -11,19 +11,26 @@ public class Maquinas {
     private Date dtChegada;
     private String sistemaOperacional;
     private String processador;
-    private Long ram;
-    private Integer discoMemoria;
-    private Long ip;
+    private String ram;
+    private String nomeDisco1;
+    private String ip;
     private Integer statusSistema;
     private Double cpuPorcentagem;
     private Double ramTotal;
-    private Double discoTotal;
+    private Double totalDisco1;
     private Double cpuMetrica;
     private Double ramMetrica;
-    private Double discoMetrica;
+    private Double gatilhoDisco1;
     private Integer tempoAtividade;
+    private String nomeDisco2;
+    private String nomeDisco3;
+    private Double totalDisco2;
+    private Double totalDisco3;
+    private Double gatilhoDisco2;
+    private Double gatilhoDisco3;
+    private String mac;
 
-    public Maquinas(Integer idMaquina, Integer fkEmpresa, String nomeMaquina, String serie, Date dtChegada, String sistemaOperacional, String processador, Long ram, Integer discoMemoria, Long ip, Integer statusSistema, Double cpuPorcentagem, Double ramTotal, Double discoTotal, Double cpuMetrica, Double ramMetrica, Double discoMetrica, Integer tempoAtividade) {
+    public Maquinas(Integer idMaquina, Integer fkEmpresa, String nomeMaquina, String serie, Date dtChegada, String sistemaOperacional, String processador, String ram, String nomeDisco1, String ip, Integer statusSistema, Double cpuPorcentagem, Double ramTotal, Double totalDisco1, Double cpuMetrica, Double ramMetrica, Double gatilhoDisco1, Integer tempoAtividade, String nomeDisco2, String nomeDisco3, Double totalDisco2, Double totalDisco3, Double gatilhoDisco2, Double gatilhoDisco3, String mac) {
         this.idMaquina = idMaquina;
         this.fkEmpresa = fkEmpresa;
         this.nomeMaquina = nomeMaquina;
@@ -32,22 +39,29 @@ public class Maquinas {
         this.sistemaOperacional = sistemaOperacional;
         this.processador = processador;
         this.ram = ram;
-        this.discoMemoria = discoMemoria;
+        this.nomeDisco1 = nomeDisco1;
         this.ip = ip;
         this.statusSistema = statusSistema;
         this.cpuPorcentagem = cpuPorcentagem;
         this.ramTotal = ramTotal;
-        this.discoTotal = discoTotal;
+        this.totalDisco1 = totalDisco1;
         this.cpuMetrica = cpuMetrica;
         this.ramMetrica = ramMetrica;
-        this.discoMetrica = discoMetrica;
+        this.gatilhoDisco1 = gatilhoDisco1;
         this.tempoAtividade = tempoAtividade;
+        this.nomeDisco2 = nomeDisco2;
+        this.nomeDisco3 = nomeDisco3;
+        this.totalDisco2 = totalDisco2;
+        this.totalDisco3 = totalDisco3;
+        this.gatilhoDisco2 = gatilhoDisco2;
+        this.gatilhoDisco3 = gatilhoDisco3;
+        this.mac = mac;
     }
 
     public Maquinas() {
-    
+        
     }
-
+    
     public Integer getIdMaquina() {
         return idMaquina;
     }
@@ -104,27 +118,27 @@ public class Maquinas {
         this.processador = processador;
     }
 
-    public Long getRam() {
+    public String getRam() {
         return ram;
     }
 
-    public void setRam(Long ram) {
+    public void setRam(String ram) {
         this.ram = ram;
     }
 
-    public Integer getDiscoMemoria() {
-        return discoMemoria;
+    public String getNomeDisco1() {
+        return nomeDisco1;
     }
 
-    public void setDiscoMemoria(Integer discoMemoria) {
-        this.discoMemoria = discoMemoria;
+    public void setNomeDisco1(String nomeDisco1) {
+        this.nomeDisco1 = nomeDisco1;
     }
 
-    public Long getIp() {
+    public String getIp() {
         return ip;
     }
 
-    public void setIp(Long ip) {
+    public void setIp(String ip) {
         this.ip = ip;
     }
 
@@ -152,12 +166,12 @@ public class Maquinas {
         this.ramTotal = ramTotal;
     }
 
-    public Double getDiscoTotal() {
-        return discoTotal;
+    public Double getTotalDisco1() {
+        return totalDisco1;
     }
 
-    public void setDiscoTotal(Double discoTotal) {
-        this.discoTotal = discoTotal;
+    public void setTotalDisco1(Double totalDisco1) {
+        this.totalDisco1 = totalDisco1;
     }
 
     public Double getCpuMetrica() {
@@ -176,12 +190,12 @@ public class Maquinas {
         this.ramMetrica = ramMetrica;
     }
 
-    public Double getDiscoMetrica() {
-        return discoMetrica;
+    public Double getGatilhoDisco1() {
+        return gatilhoDisco1;
     }
 
-    public void setDiscoMetrica(Double discoMetrica) {
-        this.discoMetrica = discoMetrica;
+    public void setGatilhoDisco1(Double gatilhoDisco1) {
+        this.gatilhoDisco1 = gatilhoDisco1;
     }
 
     public Integer getTempoAtividade() {
@@ -192,9 +206,57 @@ public class Maquinas {
         this.tempoAtividade = tempoAtividade;
     }
 
+    public String getNomeDisco2() {
+        return nomeDisco2;
+    }
+
+    public void setNomeDisco2(String nomeDisco2) {
+        this.nomeDisco2 = nomeDisco2;
+    }
+
+    public String getNomeDisco3() {
+        return nomeDisco3;
+    }
+
+    public void setNomeDisco3(String nomeDisco3) {
+        this.nomeDisco3 = nomeDisco3;
+    }
+
+    public Double getTotalDisco2() {
+        return totalDisco2;
+    }
+
+    public void setTotalDisco2(Double totalDisco2) {
+        this.totalDisco2 = totalDisco2;
+    }
+
+    public Double getTotalDisco3() {
+        return totalDisco3;
+    }
+
+    public void setTotalDisco3(Double totalDisco3) {
+        this.totalDisco3 = totalDisco3;
+    }
+
+    public Double getGatilhoDisco2() {
+        return gatilhoDisco2;
+    }
+
+    public void setGatilhoDisco2(Double gatilhoDisco2) {
+        this.gatilhoDisco2 = gatilhoDisco2;
+    }
+
+    public Double getGatilhoDisco3() {
+        return gatilhoDisco3;
+    }
+
+    public void setGatilhoDisco3(Double gatilhoDisco3) {
+        this.gatilhoDisco3 = gatilhoDisco3;
+    }
+
     @Override
     public String toString() {
-        return "Maquinas{" + "idMaquina=" + idMaquina + ", fkEmpresa=" + fkEmpresa + ", nomeMaquina=" + nomeMaquina + ", serie=" + serie + ", dtChegada=" + dtChegada + ", sistemaOperacional=" + sistemaOperacional + ", processador=" + processador + ", ram=" + ram + ", discoMemoria=" + discoMemoria + ", ip=" + ip + ", statusSistema=" + statusSistema + ", cpuPorcentagem=" + cpuPorcentagem + ", ramTotal=" + ramTotal + ", discoTotal=" + discoTotal + ", cpuMetrica=" + cpuMetrica + ", ramMetrica=" + ramMetrica + ", discoMetrica=" + discoMetrica + ", tempoAtividade=" + tempoAtividade + '}';
+        return "Maquinas{" + "idMaquina=" + idMaquina + ", fkEmpresa=" + fkEmpresa + ", nomeMaquina=" + nomeMaquina + ", serie=" + serie + ", dtChegada=" + dtChegada + ", sistemaOperacional=" + sistemaOperacional + ", processador=" + processador + ", ram=" + ram + ", nomeDisco1=" + nomeDisco1 + ", ip=" + ip + ", statusSistema=" + statusSistema + ", cpuPorcentagem=" + cpuPorcentagem + ", ramTotal=" + ramTotal + ", totalDisco1=" + totalDisco1 + ", cpuMetrica=" + cpuMetrica + ", ramMetrica=" + ramMetrica + ", gatilhoDisco1=" + gatilhoDisco1 + ", tempoAtividade=" + tempoAtividade + ", nomeDisco2=" + nomeDisco2 + ", nomeDisco3=" + nomeDisco3 + ", totalDisco2=" + totalDisco2 + ", totalDisco3=" + totalDisco3 + ", gatilhoDisco2=" + gatilhoDisco2 + ", gatilhoDisco3=" + gatilhoDisco3 + ", mac=" + mac + '}';
     }
     
     

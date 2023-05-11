@@ -7,7 +7,6 @@ package hardwares;
 import com.github.britooo.looca.api.core.Looca;
 import java.util.List;
 import com.github.britooo.looca.api.group.discos.Disco;
-import com.github.britooo.looca.api.group.discos.DiscoGrupo;
 import java.util.ArrayList;
 
 /**

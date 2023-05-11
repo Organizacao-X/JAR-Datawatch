@@ -11,23 +11,40 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.Timer;
+import org.springframework.jdbc.core.JdbcTemplate;
+import sptech.datawatch.Conexao;
 import sptech.datawatch.Ip;
+import tabelas.Maquinas;
+import selects.Selects;
 
 /**
  *
  * @author leone
  */
-public class SistemaDatawatch extends javax.swing.JFrame {
+public class SistemaDatawatch extends javax.swing.JFrame  {
 
     private Timer timer;
+    private String enderecoMac;
 
     /**
      * Creates new form SistemaDatawatch
      */
     public SistemaDatawatch() {
+        Conexao conexaoAzure = new Conexao("azure");
+//        JdbcTemplate conAzure = conexao.getConnection();
+        
         initComponents();
-        setTitle("DATAWATCH - Sistema");
+
         Looca looca = new Looca();
+
+        enderecoMac = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getEnderecoMac();
+        
+//        Maquinas maquina = Selects.pegarMaquinaCorrespondente(conAzure, enderecoMac);
+        
+        
+        
+        setTitle("DATAWATCH - Sistema");
+
         lblCapRamTotal.setText(String.format("%s", Conversor.formatarBytes(looca.getMemoria().getTotal())));
         
         ArrayList<JLabel> labels = new ArrayList<JLabel>();

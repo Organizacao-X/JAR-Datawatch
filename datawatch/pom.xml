@@ -25,7 +25,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>login.TelaLogin</mainClass> 
+                            <mainClass>sptech.datawatch.Datawatch</mainClass> 
                         </manifest>
                     </archive>
                 </configuration>
