@@ -12,6 +12,7 @@ login/SistemaDatawatch.class
 tabelas/Maquinas.class
 sptech/datawatch/Ip.class
 login/TelaLogin$5.class
+login/Sha2_256.class
 selects/Selects.class
 login/SistemaDatawatch$2.class
 login/TelaLogin$3.class

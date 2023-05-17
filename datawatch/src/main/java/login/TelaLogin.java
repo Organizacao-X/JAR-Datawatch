@@ -2,22 +2,26 @@ package login;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
 import sptech.datawatch.Conexao;
 import tabelas.Usuarios;
 
 public class TelaLogin extends javax.swing.JFrame {
 
     private Timer tempo;
+    private Sha2_256 hash = new Sha2_256();
+    private static List<Usuarios> listaDeUsuarios = new ArrayList();
 
     public TelaLogin() {
         initComponents();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -206,18 +210,23 @@ public class TelaLogin extends javax.swing.JFrame {
 
         // AQUI A GENTE CRIA CONEXAO COM O BANCO DE DADOS 
         // CONFIGURADO NO CONEXAO.JAVA
-//        Conexao conexao = new Conexao();
+        Conexao conexaoAzure = new Conexao("azure");
 
         // ESSE CON SEMPRE VAMOS USAR PRA DAR COMANDOS NO BANCO
-//        JdbcTemplate con = conexao.getConnection();
+        JdbcTemplate con = conexaoAzure.getConnection();
 
         // AQUI PEGA O ENDEREÇO DE CONEXAO E USA O TEMPLATE PRA ACESSAR
-//        conexao.getConnection();
-        
-        List<Usuarios> listaDeUsuarios = new ArrayList();
+        conexaoAzure.getConnection();
 
-//        listaDeUsuarios = con.query("select * from Usuarios where email = ? and senha = ?",
-//                new BeanPropertyRowMapper(Usuarios.class), email, senha);
+        try {
+            senha = hash.criarHash(senha);
+
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        listaDeUsuarios = con.query("select * from Usuarios where email = ? and senha = ?",
+                new BeanPropertyRowMapper(Usuarios.class), email, senha);
 
         if (!listaDeUsuarios.isEmpty()) {
             // A lista não está vazia, podemos acessar o primeiro elemento
@@ -264,6 +273,8 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -272,6 +283,28 @@ public class TelaLogin extends javax.swing.JFrame {
             }
 
         });
+    }
+
+    public static String criarHash(String senhaNormal) throws NoSuchAlgorithmException {
+        senhaNormal += senhaNormal;
+        System.out.println(senhaNormal);
+        // Obtém uma instância do algoritmo SHA-256
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+        // Converte a senha para um array de bytes e aplica o algoritmo
+        byte[] hashBytes = md.digest(senhaNormal.getBytes());
+
+        // Converte o array de bytes para uma string em formato hexadecimal
+        StringBuilder sb = new StringBuilder();
+        for (byte b : hashBytes) {
+            sb.append(String.format("%02x", b));
+        }
+        String hashSenha = sb.toString();
+        return hashSenha;
+    }
+
+    public static List<Usuarios> getListaDeUsuarios() {
+        return listaDeUsuarios;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

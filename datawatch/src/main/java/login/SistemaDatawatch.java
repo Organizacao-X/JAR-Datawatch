@@ -6,6 +6,7 @@ package login;
 
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.util.Conversor;
+import inserts.Inserts;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -16,59 +17,74 @@ import sptech.datawatch.Conexao;
 import sptech.datawatch.Ip;
 import tabelas.Maquinas;
 import selects.Selects;
+import login.TelaLogin;
 
 /**
  *
  * @author leone
  */
-public class SistemaDatawatch extends javax.swing.JFrame  {
+public class SistemaDatawatch extends javax.swing.JFrame {
 
     private Timer timer;
-    private String enderecoMac;
 
     /**
      * Creates new form SistemaDatawatch
      */
     public SistemaDatawatch() {
-        Conexao conexaoAzure = new Conexao("azure");
-//        JdbcTemplate conAzure = conexao.getConnection();
-        
         initComponents();
 
+        // instânciando as conexões do JDBC para Azure e Mysql local (container)
         Looca looca = new Looca();
+        Conexao conexaoAzure = new Conexao("azure");
+        Conexao conexaoMysql = new Conexao("mysql");
+        JdbcTemplate jdbcAzure = conexaoAzure.getConnection();
+        JdbcTemplate jdbcMysql = conexaoMysql.getConnection();
 
-        enderecoMac = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getEnderecoMac();
-        
-//        Maquinas maquina = Selects.pegarMaquinaCorrespondente(conAzure, enderecoMac);
-        
-        
-        
+        // verificando se a máquina já existe no banco de dados através do endereço MAC
+        Maquinas maquina = Selects.pegarMaquinaCorrespondente(jdbcAzure);
+
+        if (maquina == null) {
+            System.out.println("Máquina não existe. Inserindo dados no banco de dados");
+            Integer fkEmpresa = TelaLogin.getListaDeUsuarios().get(0).getFkEmpresa();
+            inserts.Inserts.inserirDadosMaquinaEstatico(jdbcAzure, jdbcMysql, looca, fkEmpresa, null, false);
+        } else {
+            System.out.println("Máquina já existe\n");
+            Integer idMaquina = maquina.getIdMaquina();
+            inserts.Inserts.inserirDadosMaquinaEstatico(jdbcAzure, jdbcMysql, looca, null, idMaquina, true);
+        }
+
         setTitle("DATAWATCH - Sistema");
 
         lblCapRamTotal.setText(String.format("%s", Conversor.formatarBytes(looca.getMemoria().getTotal())));
-        
+
         ArrayList<JLabel> labels = new ArrayList<JLabel>();
         labels.add(lblCapQtdDisco1);
         labels.add(lblCapQtdDisco2);
         labels.add(lblCapQtdDisco3);
-            for (int i = 0; i < looca.getGrupoDeDiscos().getQuantidadeDeDiscos(); i++) {
+        for (int i = 0; i < looca.getGrupoDeDiscos().getQuantidadeDeDiscos(); i++) {
             labels.get(i).setText(String.format(
-                    "Total: %s Livre: %s", 
+                    "Total: %s Livre: %s",
                     Conversor.formatarBytes(looca.getGrupoDeDiscos().getDiscos().get(i).getTamanho()),
                     Conversor.formatarBytes(looca.getGrupoDeDiscos().getVolumes().get(i).getDisponivel())));
-            
-    }
-            lblInfo.setText("Capturando dados!");
-        timer = new Timer(500, new ActionListener() {
+        }
+
+        lblInfo.setText("Capturando dados!");
+
+        timer = new Timer(5000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Capturar:
+                // cpuUso, temperatura ?, ramUso, redeUpload, redeDownload, LivreDisco1, LivreDisco2, LivreDisco3
+                Maquinas maquina = Selects.pegarMaquinaCorrespondente(jdbcAzure);
+                inserts.Inserts.capturarInserirDados(maquina.getIdMaquina(), maquina.getFkEmpresa(), jdbcAzure, jdbcMysql);
                 Ip ip = new Ip();
                 lblCapMemoriaRam.setText(Conversor.formatarBytes(looca.getMemoria().getEmUso()));
                 lblCapIp.setText(ip.getIp());
                 lblCapCpu.setText(String.format("%.2f%% de uso", looca.getProcessador().getUso()));
-                
+
             }
         });
+
         timer.setRepeats(true);
 
         timer.start();
