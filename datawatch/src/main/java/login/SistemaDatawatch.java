@@ -10,6 +10,7 @@ import inserts.Inserts;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,6 +19,7 @@ import sptech.datawatch.Ip;
 import tabelas.Maquinas;
 import selects.Selects;
 import login.TelaLogin;
+import tabelas.Empresas;
 
 /**
  *
@@ -40,12 +42,19 @@ public class SistemaDatawatch extends javax.swing.JFrame {
         JdbcTemplate jdbcAzure = conexaoAzure.getConnection();
         JdbcTemplate jdbcMysql = conexaoMysql.getConnection();
 
+        // inserindo empresa no banco de dados docker
+        Integer fkEmpresa = TelaLogin.getListaDeUsuarios().get(0).getFkEmpresa();
+        List<Empresas> empresa = Selects.pegarEmpresa(jdbcAzure, fkEmpresa);
+        if (empresa != null) {
+            inserts.Inserts.inserirEmpresaContainer(jdbcMysql, empresa.get(0));
+        }
+
         // verificando se a máquina já existe no banco de dados através do endereço MAC
         Maquinas maquina = Selects.pegarMaquinaCorrespondente(jdbcAzure);
 
         if (maquina == null) {
             System.out.println("Máquina não existe. Inserindo dados no banco de dados");
-            Integer fkEmpresa = TelaLogin.getListaDeUsuarios().get(0).getFkEmpresa();
+            fkEmpresa = TelaLogin.getListaDeUsuarios().get(0).getFkEmpresa();
             inserts.Inserts.inserirDadosMaquinaEstatico(jdbcAzure, jdbcMysql, looca, fkEmpresa, null, false);
         } else {
             System.out.println("Máquina já existe\n");

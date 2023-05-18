@@ -8,6 +8,7 @@ import com.github.britooo.looca.api.core.Looca;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import tabelas.Empresas;
 import tabelas.Maquinas;
 import tabelas.Reboot;
 
@@ -39,5 +40,10 @@ public class Selects {
             return true;
         }
         return false;
+    }
+    
+    public static List<Empresas> pegarEmpresa(JdbcTemplate con, Integer idEmpresa) {
+        List<Empresas> empresas = con.query("SELECT * FROM Empresas WHERE idEmpresa = ?;", new BeanPropertyRowMapper(Empresas.class), idEmpresa);
+        return empresas;
     }
 }

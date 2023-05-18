@@ -27,6 +27,7 @@ import login.TelaLogin;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import selects.Selects;
 import tabelas.Capturas;
+import tabelas.Empresas;
 import tabelas.Maquinas;
 
 public class Datawatch {
@@ -71,6 +72,11 @@ public class Datawatch {
 
         // SE REALIZAR O LOGIN COM SUCESSO
         if (autenticado) {
+            // INSERIR DADOS NA EMPRESA NO BANCO DE DADOS DO CONTAINER
+            List<Empresas> empresa = Selects.pegarEmpresa(jdbcAzure, fkEmpresa);
+            if(empresa != null)
+                inserts.Inserts.inserirEmpresaContainer(jdbcMysql, empresa.get(0));
+            
             // VERIFICA SE ESSA MÁQUINA EXISTE NO BANCO DE DADOS
             Maquinas maquina = Selects.pegarMaquinaCorrespondente(jdbcAzure);
 
