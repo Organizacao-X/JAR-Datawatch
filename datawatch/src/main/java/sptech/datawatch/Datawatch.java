@@ -99,6 +99,8 @@ public class Datawatch {
                 // INSERE UMA CAPTURA PARA OS DADOS VOLÁTEIS DESTA MÁQUINA
                 inserts.Inserts.capturarInserirDados(maquina.getIdMaquina(), maquina.getFkEmpresa(), jdbcAzure, jdbcMysql);
                 
+                System.out.println(maquina.getIdMaquina());
+                System.out.println(maquina.getFkEmpresa());
                 // VERIFICA SE O COMANDO PARA REBOOTAR A MÁQUINA FOI ATIVADO
                 if (Selects.reebotar(jdbcAzure, maquina.getIdMaquina(), maquina.getFkEmpresa())) {
                     RebootOld.rebootar();

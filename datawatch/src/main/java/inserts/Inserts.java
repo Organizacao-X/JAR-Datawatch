@@ -164,6 +164,8 @@ public class Inserts {
                     + "ramMetrica = ?, gatilhoDisco1 = ?, gatilhoDisco2 = ?, gatilhoDisco3 = ?, tempoAtividade = ?, mac = ? WHERE idMaquina = ?", nomeMaquina, serie, sistemaOperacional, processador, ram, nomeDisco1,
                     nomeDisco2, nomeDisco3, ip, statusSistema, cpuPorcentagem, ramTotal, totalDisco1, totalDisco2, totalDisco3, cpuMetrica, ramMetrica, gatilhoDisco1,
                     gatilhoDisco2, gatilhoDisco3, tempoAtividade, mac, idMaquina);
+            conAzure.update("UPDATE Reboot SET rebootar = 0 WHERE fkMaquina = ?;", idMaquina);
+
         }
 
 //        Integer teste = conMysql.update("INSERT INTO Maquinas ("
