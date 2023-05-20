@@ -21,6 +21,7 @@ import java.time.Instant;
 import java.util.List;
 import javax.swing.Timer;
 import login.TelaLogin;
+import org.json.JSONObject;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import selects.Selects;
 import tabelas.Capturas;
@@ -34,6 +35,8 @@ public class Datawatch {
         Conexao conexaoMysql = new Conexao("mysql");
         JdbcTemplate jdbcAzure = conexaoAzure.getConnection();
         JdbcTemplate jdbcMysql = conexaoMysql.getConnection();
+        Boolean avisoSlack = true;
+        Slack slack = new Slack();
 
         while (true) {
             Maquinas maquina = Selects.pegarMaquinaCorrespondente(jdbcAzure);
@@ -42,6 +45,12 @@ public class Datawatch {
             if (Selects.reebotar(jdbcAzure, 20, 1)) {
                 RebootOld.rebootar();
             }
+            
+//            //Aqui o bot irá enviar uma mensagem avisando que alguém se conectou
+//            if (avisoSlack) {
+//                slack.avisoLogin(maquina);
+//                avisoSlack = false;
+//            }
             Thread.sleep(5000);
         }
 
