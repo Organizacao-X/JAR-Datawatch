@@ -37,7 +37,7 @@ public class Datawatch {
         JdbcTemplate jdbcMysql = conexaoMysql.getConnection();
         Boolean avisoSlack = true;
         Slack slack = new Slack();
-
+        
         while (true) {
             Maquinas maquina = Selects.pegarMaquinaCorrespondente(jdbcAzure);
 

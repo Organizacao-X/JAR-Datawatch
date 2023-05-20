@@ -21,17 +21,18 @@ public class Selects {
         String mac = pegarMac();
         System.out.println(mac);
         List<Maquinas> maquinas = con.query("SELECT * FROM Maquinas WHERE mac = ?", new BeanPropertyRowMapper<>(Maquinas.class), mac);
+
         if (maquinas.size() != 0) {
             return maquinas.get(0);
         }
         return null;
     }
-    
+
     public static String pegarMac() {
         Looca looca = new Looca();
         return looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getEnderecoMac();
     }
-    
+
     public static Boolean reebotar(JdbcTemplate conAzure, Integer fkMaquina, Integer fkEmpresa) {
         List<Reboot> reboot = conAzure.query("SELECT * FROM Reboot WHERE fkMaquina = ? AND fkEmpresa = ?", new BeanPropertyRowMapper(Reboot.class), fkMaquina, fkEmpresa);
         if (reboot.get(0).getRebootar().equals(1)) {
@@ -39,5 +40,13 @@ public class Selects {
             return true;
         }
         return false;
+    }
+
+    public static List<String> buscarfkMaquinaEfkEmpresa(JdbcTemplate con) {
+        List<String> maquinaEEmpresa = con.query("SELECT usu.email, usu.fkEmpresa, maq.idMaquina FROM Usuarios AS usu\n"
+                + "    JOIN Empresas AS emp ON usu.fkEmpresa = emp.idEmpresa\n"
+                + "        JOIN Maquinas AS maq ON emp.idEmpresa = maq.fkEmpresa\n"
+                + "            WHERE usu.email = ? AND usu.senha = ?", new BeanPropertyRowMapper<>());
+        return null;
     }
 }
