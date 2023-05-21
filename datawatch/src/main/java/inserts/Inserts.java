@@ -89,11 +89,12 @@ public class Inserts {
         // DADOS SISTEMA
         String nomeMaquina = looca.getRede().getParametros().getHostName();
         String sistemaOperacional = looca.getSistema().getSistemaOperacional();
-        String ip = Ip.getIp();
         Integer tempoAtividade = Integer.valueOf(looca.getSistema().getTempoDeAtividade() + "");
         Integer statusSistema = 1;
-        String mac = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getEnderecoMac();
-
+        List<RedeInterface> ri = looca.getRede().getGrupoDeInterfaces().getInterfaces();
+        String mac = ri.get(ri.size() - 1).getEnderecoMac();
+        String ip = ri.get(ri.size() - 1).getEnderecoIpv4().get(0);
+        
         // CPU
         String processador = looca.getProcessador().getNome();
         Double cpuPorcentagem = looca.getProcessador().getUso();
