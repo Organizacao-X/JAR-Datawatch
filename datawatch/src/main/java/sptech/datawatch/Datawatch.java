@@ -1,32 +1,19 @@
 package sptech.datawatch;
 
 import com.github.britooo.looca.api.core.Looca;
-import com.github.britooo.looca.api.group.discos.Disco;
-import com.github.britooo.looca.api.group.discos.DiscoGrupo;
-import com.github.britooo.looca.api.group.discos.Volume;
-import com.github.britooo.looca.api.group.memoria.Memoria;
-import com.github.britooo.looca.api.group.processador.Processador;
-import com.github.britooo.looca.api.group.rede.Rede;
-import com.github.britooo.looca.api.group.rede.RedeInterface;
-import com.github.britooo.looca.api.group.rede.RedeInterfaceGroup;
-import com.github.britooo.looca.api.util.Conversor;
-import hardwares.DatawatchDiscos;
-import inserts.Inserts;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import tabelas.Usuarios;
-import java.time.Instant;
 import java.util.List;
 import java.util.Scanner;
-import javax.swing.Timer;
 import login.Sha2_256;
-import login.TelaLogin;
+import org.json.JSONObject;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import selects.Selects;
-import tabelas.Capturas;
+import slack.Slack;
+import slack.SlackEnum;
+import static slack.SlackEnumController.logMessage;
 import tabelas.Empresas;
 import tabelas.Maquinas;
 
@@ -42,7 +29,7 @@ public class Datawatch {
         Scanner scnr = new Scanner(System.in);
         Boolean autenticado = false;
         Integer fkEmpresa = 0;
-
+        
         // VERIFICAÇÃO DA EXISTÊNCIA DESSE USUÁRIO NO BANCO
         while (!autenticado) {
             // LOGIN
@@ -58,13 +45,18 @@ public class Datawatch {
                 }
 
                 List<Usuarios> listaUsuarios = jdbcAzure.query("SELECT * FROM Usuarios WHERE email = ? AND senha = ?;", new BeanPropertyRowMapper(Usuarios.class), email, senha);
-
+                JSONObject json = new JSONObject();
                 if (!listaUsuarios.isEmpty()) {
+                    // BOT DO SLACK AVISA NO CANAL QUE O USUARIO COM ESTE IP SE CONECTOU
+                    Slack.sendMessage(json.put("text", logMessage(SlackEnum.INFO_LOGIN)));
+                    
                     System.out.println("Login realizado com sucesso! Conectando...");
                     System.out.println(listaUsuarios.get(0).getEmail());
                     fkEmpresa = listaUsuarios.get(0).getFkEmpresa();
                     autenticado = true;
                 } else {
+                    // BOT DO SLACK AVISA NO CANAL QUE O USUARIO COM ESTE IP TENTOU SE CONECTAR
+                    Slack.sendMessage(json.put("text", logMessage(SlackEnum.WARNING_LOGIN_FALHO)));
                     System.out.println("USUÁRIO E/OU SENHA INVÁLIDO!");
                     
                     
