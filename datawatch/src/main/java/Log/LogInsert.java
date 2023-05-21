@@ -25,6 +25,7 @@ import tabelas.Usuarios;
  * @author Lucas
  */
 public class LogInsert extends Log{
+    
 
     public LogInsert(String nomeDocumento, String nomeLogado, String descricao) {
         super(nomeDocumento, nomeLogado, descricao);
