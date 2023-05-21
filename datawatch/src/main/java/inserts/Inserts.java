@@ -53,14 +53,14 @@ public class Inserts {
     }
 
     public static void inserirCaptura(JdbcTemplate conAzure, JdbcTemplate conMysql, Integer fkMaquina, Integer fkEmpresa, Double cpuUso,
-            Double ramUso, Double redeUpload, Double redeDownload, Double LivreDisco, Double LivreDisco2, Double LivreDisco3) {
-        if (fkMaquina == null || fkEmpresa == null || cpuUso == null || ramUso == null || redeUpload == null || redeDownload == null || LivreDisco == null) {
+            Double ramUso, Double redeUpload, Double redeDownload, Double LivreDisco1, Double LivreDisco2, Double LivreDisco3) {
+        if (fkMaquina == null || fkEmpresa == null || cpuUso == null || ramUso == null || redeUpload == null || redeDownload == null || LivreDisco1 == null) {
             System.out.println("Dados inválidos. Não foi possível realizar o INSERT");
         } else {
             conMysql.update("INSERT INTO Capturas (idCaptura, fkMaquina, fkEmpresa, dataHora, cpuUso, temperatura, ramUso, redeUpload, redeDownload, LivreDisco1, LivreDisco2, LivreDisco3) VALUES"
-                    + "(null, ?, ?, CURRENT_TIMESTAMP, TRUNCATE(?, 2), 42.0, ?, ?, ?, ?, ?, ?)", fkMaquina, fkEmpresa, cpuUso, ramUso, redeUpload, redeDownload, LivreDisco, LivreDisco2, LivreDisco3);
+                    + "(null, ?, ?, CURRENT_TIMESTAMP, TRUNCATE(?, 2), 42.0, ?, ?, ?, ?, ?, ?)", fkMaquina, fkEmpresa, cpuUso, ramUso, redeUpload, redeDownload, LivreDisco1, LivreDisco2, LivreDisco3);
             conAzure.update("INSERT INTO Capturas (fkMaquina, fkEmpresa, dataHora, cpuUso, temperatura, ramUso, redeUpload, redeDownload, LivreDisco1, LivreDisco2, LivreDisco3) VALUES"
-                    + "(?, ?, CURRENT_TIMESTAMP, CAST(ROUND(?, 2, 1) AS FLOAT), 42.0, ?, ?, ?, ?, ?, ?)", fkMaquina, fkEmpresa, cpuUso, ramUso, redeUpload, redeDownload, LivreDisco, LivreDisco2, LivreDisco3);
+                    + "(?, ?, CURRENT_TIMESTAMP, CAST(ROUND(?, 2, 1) AS FLOAT), 42.0, ?, ?, ?, ?, ?, ?)", fkMaquina, fkEmpresa, cpuUso, ramUso, redeUpload, redeDownload, LivreDisco1, LivreDisco2, LivreDisco3);
         }
     }
 
@@ -189,9 +189,9 @@ public class Inserts {
         List<Empresas> e = conMysql.query("SELECT * FROM Empresas WHERE cnpj = ?", new BeanPropertyRowMapper(Empresas.class), empresa.getCnpj());
 
         if (e.isEmpty()) {
-            conMysql.update("INSERT INTO Empresas VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
+            conMysql.update("INSERT INTO Empresas VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
                     empresa.getIdEmpresa(), empresa.getRazaoSocial(), empresa.getCnpj(), empresa.getCep(), empresa.getLogradouro(),
-                    empresa.getNumero(), empresa.getComplemento(), empresa.getBairro(), empresa.getCidade(), empresa.getEstado(), empresa.getVerificado(), null);
+                    empresa.getNumero(), empresa.getComplemento(), empresa.getBairro(), empresa.getCidade(), empresa.getEstado(), empresa.getVerificado());
             System.out.println("Empresa inserida no banco de dados do container");
         }
     }
