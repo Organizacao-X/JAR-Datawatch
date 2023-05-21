@@ -58,6 +58,8 @@ public class Datawatch {
                     // BOT DO SLACK AVISA NO CANAL QUE O USUARIO COM ESTE IP TENTOU SE CONECTAR
                     Slack.sendMessage(json.put("text", logMessage(SlackEnum.WARNING_LOGIN_FALHO)));
                     System.out.println("USUÁRIO E/OU SENHA INVÁLIDO!");
+                    
+                    
                 }
             }
         }
