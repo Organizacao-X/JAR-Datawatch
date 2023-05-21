@@ -66,6 +66,8 @@ public class Datawatch {
                     autenticado = true;
                 } else {
                     System.out.println("USUÁRIO E/OU SENHA INVÁLIDO!");
+                    
+                    
                 }
             }
         }

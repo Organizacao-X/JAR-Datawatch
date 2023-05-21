@@ -24,12 +24,12 @@ import tabelas.Usuarios;
  *
  * @author Lucas
  */
-public class Log {
+public abstract class Log {
     
-    private String nomeDocumento;
-    private String nomeLogado;
-    private List<String> status;
-    private String descricao;
+    protected String nomeDocumento;
+    protected String nomeLogado;
+    protected List<String> status;
+    protected String descricao;
 
     public Log(String nomeDocumento, String nomeLogado, String descricao) {
         this.nomeDocumento = nomeDocumento;
@@ -40,42 +40,8 @@ public class Log {
     
     
     
-    public void criarLog() throws IOException {
-        // Formata a data
-        LocalDate dataAtual = LocalDate.now();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String dataFormatada = dataAtual.format(formato);
-        
+    public abstract void criarLog();
 
-        // Formata a data e a hora
-        LocalDateTime dataHoraAtual = LocalDateTime.now();
-        DateTimeFormatter formato2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String dataHoraFormatada = dataHoraAtual.format(formato2);
-        
-        
-        
-        setNomeDocumento(dataFormatada);
-        
-        String titulo = String.format("%s_%s.txt", dataFormatada, getnomeLogado());
-        File arquivo = new File(titulo);
-        
-        
-        if(!arquivo.exists()){
-          arquivo.createNewFile();
-        }
-        
-        
-          List<String> lista = new ArrayList<>();
-                    
-          lista.add(dataHoraFormatada + " " + getnomeLogado() + " " + getDescricao());
-          
-          
-          Files.write(Paths.get(arquivo.getPath()), lista, StandardOpenOption.APPEND);
-          
-          
-          
-          
-    }
 
     public String getNomeDocumento() {
         return nomeDocumento;
