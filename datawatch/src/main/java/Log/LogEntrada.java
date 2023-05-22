@@ -49,7 +49,7 @@ public class LogEntrada extends Log{
         
         setNomeDocumento(dataFormatada);
         
-        String titulo = String.format("%s_%s.txt", dataFormatada, getnomeLogado());
+        String titulo = String.format("%s_sistema.txt", dataFormatada);
         File arquivo = new File(titulo);
         
         

@@ -121,6 +121,16 @@ public class Usuarios {
         this.fkEmpresa = fkEmpresa;
     }
 
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "Usuarios{" + "idUsuario=" + idUsuario + ", nomeUsuario=" + nomeUsuario + ", email=" + email + ", cpf=" + cpf + ", senha=" + senha + ", statusUsuario=" + statusUsuario + ", imagemUser=" + imagemUser + ", adm=" + adm + ", fkEmpresa=" + fkEmpresa + '}';

@@ -4,6 +4,8 @@
  */
 package inserts;
 
+import Log.Log;
+import Log.LogInsert;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.DiscoGrupo;
 import com.github.britooo.looca.api.group.discos.Volume;
@@ -36,8 +38,8 @@ public class Inserts {
         Double redeDownload = Format.formatarInserirBanco(ri.get(0).getBytesRecebidos());
         Double redeUpload = Format.formatarInserirBanco(ri.get(0).getBytesEnviados());
         Double LivreDisco1 = Format.formatarInserirBanco(listaVolumes.get(0).getDisponivel());
-        Double LivreDisco2 = listaVolumes.get(1) == null ? null : Format.formatarInserirBanco(listaVolumes.get(1).getDisponivel());
-        Double LivreDisco3 = listaVolumes.get(2) == null ? null : Format.formatarInserirBanco(listaVolumes.get(2).getDisponivel());
+        Double LivreDisco2 = listaVolumes.size() == 2 ? Format.formatarInserirBanco(listaVolumes.get(1).getDisponivel()) : null;
+        Double LivreDisco3 = listaVolumes.size() == 3 ? Format.formatarInserirBanco(listaVolumes.get(2).getDisponivel()) : null;
         capturas.add(fkMaquina);
         capturas.add(fkEmpresa);
         capturas.add(cpuUso);
@@ -49,7 +51,7 @@ public class Inserts {
         capturas.add(LivreDisco2);
         capturas.add(LivreDisco3);
         System.out.println(capturas);
-        inserirCaptura(conAzure, conMysql, fkMaquina, fkEmpresa, cpuUso, ramUso, redeUpload, redeDownload, LivreDisco3, LivreDisco2, LivreDisco3);
+        inserirCaptura(conAzure, conMysql, fkMaquina, fkEmpresa, cpuUso, ramUso, redeUpload, redeDownload, LivreDisco1, LivreDisco2, LivreDisco3);
     }
 
     public static void inserirCaptura(JdbcTemplate conAzure, JdbcTemplate conMysql, Integer fkMaquina, Integer fkEmpresa, Double cpuUso,
@@ -154,6 +156,8 @@ public class Inserts {
                     + "?, ?, ?, ?);",
                     fkEmpresa, nomeMaquina, serie, sistemaOperacional, processador, ram, nomeDisco1, nomeDisco2, nomeDisco3, ip, statusSistema, cpuPorcentagem,
                     ramTotal, totalDisco1, totalDisco2, totalDisco3, cpuMetrica, ramMetrica, gatilhoDisco1, gatilhoDisco2, gatilhoDisco3, tempoAtividade, mac);
+            
+            Log logInput = new LogInsert("", nomeMaquina, "");
 
             List<Maquinas> estaMaquina = conAzure.query("SELECT * FROM Maquinas WHERE mac = ?", new BeanPropertyRowMapper(Maquinas.class), mac);
 
@@ -166,6 +170,8 @@ public class Inserts {
                     nomeDisco2, nomeDisco3, ip, statusSistema, cpuPorcentagem, ramTotal, totalDisco1, totalDisco2, totalDisco3, cpuMetrica, ramMetrica, gatilhoDisco1,
                     gatilhoDisco2, gatilhoDisco3, tempoAtividade, mac, idMaquina);
             conAzure.update("UPDATE Reboot SET rebootar = 0 WHERE fkMaquina = ?;", idMaquina);
+            
+                        Log logInput = new LogInsert("", nomeMaquina, "");
 
         }
 

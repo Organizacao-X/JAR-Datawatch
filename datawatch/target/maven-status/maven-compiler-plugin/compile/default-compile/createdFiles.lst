@@ -14,6 +14,7 @@ login\TelaLogin$3.class
 tabelas\Reboot.class
 selects\Selects.class
 tabelas\Empresas.class
+.netbeans_automatic_build
 inserts\Inserts.class
 sptech\datawatch\RebootOld.class
 tabelas\Maquinas.class
