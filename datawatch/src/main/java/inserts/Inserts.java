@@ -75,14 +75,17 @@ public class Inserts {
         // DADOS DISCOS
         DatawatchDiscos discosMaquina = new DatawatchDiscos();
         discosMaquina.inserirDiscos();
+        
         // NOMES DISCOS
         String nomeDisco1 = discosMaquina.discos.get(0).getModelo();
         String nomeDisco2 = discosMaquina.discos.get(1) == null ? null : discosMaquina.discos.get(1).getModelo();
         String nomeDisco3 = discosMaquina.discos.get(2) == null ? null : discosMaquina.discos.get(2).getModelo();
+        
         // TOTAL DISCOS
         Double totalDisco1 = Format.formatarInserirBanco(discosMaquina.discos.get(0).getTamanho());
         Double totalDisco2 = discosMaquina.discos.get(1) == null ? null : Format.formatarInserirBanco(discosMaquina.discos.get(1).getTamanho());
         Double totalDisco3 = discosMaquina.discos.get(2) == null ? null : Format.formatarInserirBanco(discosMaquina.discos.get(2).getTamanho());
+        
         // GATILHO DISCOS
         Double gatilhoDisco1 = null;
         Double gatilhoDisco2 = null;
@@ -129,6 +132,7 @@ public class Inserts {
 //        System.out.println(ramTotal);
 //        System.out.println(ramMetrica);
 //        System.out.println(tempoAtividade);
+
         if (!update) {
             conAzure.update("INSERT INTO Maquinas ("
                     + "fkEmpresa, nomeMaquina, serie, dtChegada, sistemaOperacional, "
