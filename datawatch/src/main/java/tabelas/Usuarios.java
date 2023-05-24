@@ -25,30 +25,11 @@ public class Usuarios {
         this.fkEmpresa = fkEmpresa;
         this.uuid = uuid;
     }
-    
-    
-    
-        public Usuarios() {
-        
+
+    public Usuarios() {
+
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -121,10 +102,17 @@ public class Usuarios {
         this.fkEmpresa = fkEmpresa;
     }
 
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setFkEmpresa(String uuid) {
+        this.uuid = uuid;
+    }
+
     @Override
     public String toString() {
-        return "Usuarios{" + "idUsuario=" + idUsuario + ", nomeUsuario=" + nomeUsuario + ", email=" + email + ", cpf=" + cpf + ", senha=" + senha + ", statusUsuario=" + statusUsuario + ", imagemUser=" + imagemUser + ", adm=" + adm + ", fkEmpresa=" + fkEmpresa + '}';
+        return "Usuarios{" + "idUsuario=" + idUsuario + ", nomeUsuario=" + nomeUsuario + ", email=" + email + ", cpf=" + cpf + ", senha=" + senha + ", statusUsuario=" + statusUsuario + ", imagemUser=" + imagemUser + ", adm=" + adm + ", fkEmpresa=" + fkEmpresa +", uuid=" + uuid + '}';
     }
-    
-    
+
 }
