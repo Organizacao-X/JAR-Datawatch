@@ -5,12 +5,16 @@
 package login;
 
 import com.github.britooo.looca.api.core.Looca;
+import com.github.britooo.looca.api.group.rede.RedeInterface;
 import com.github.britooo.looca.api.util.Conversor;
 import inserts.Inserts;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,6 +23,7 @@ import sptech.datawatch.Ip;
 import tabelas.Maquinas;
 import selects.Selects;
 import login.TelaLogin;
+import sptech.datawatch.RebootOld;
 import tabelas.Empresas;
 
 /**
@@ -86,9 +91,17 @@ public class SistemaDatawatch extends javax.swing.JFrame {
                 // cpuUso, temperatura ?, ramUso, redeUpload, redeDownload, LivreDisco1, LivreDisco2, LivreDisco3
                 Maquinas maquina = Selects.pegarMaquinaCorrespondente(jdbcAzure);
                 inserts.Inserts.capturarInserirDados(maquina.getIdMaquina(), maquina.getFkEmpresa(), jdbcAzure, jdbcMysql);
-                Ip ip = new Ip();
+                if (Selects.reebotar(jdbcAzure, maquina.getIdMaquina(), maquina.getFkEmpresa())) {
+                    try {
+                        RebootOld.rebootar();
+                    } catch (IOException ex) {
+                        Logger.getLogger(SistemaDatawatch.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                List<RedeInterface> ri = looca.getRede().getGrupoDeInterfaces().getInterfaces();
+                String ip = ri.get(ri.size() - 1).getEnderecoIpv4().get(0);
                 lblCapMemoriaRam.setText(Conversor.formatarBytes(looca.getMemoria().getEmUso()));
-                lblCapIp.setText(ip.getIp());
+                lblCapIp.setText(ip);
                 lblCapCpu.setText(String.format("%.2f%% de uso", looca.getProcessador().getUso()));
 
             }

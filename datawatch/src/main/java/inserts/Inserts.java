@@ -10,6 +10,7 @@ import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.DiscoGrupo;
 import com.github.britooo.looca.api.group.discos.Volume;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
+import com.github.britooo.looca.api.util.Conversor;
 import hardwares.DatawatchDiscos;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +39,8 @@ public class Inserts {
         Double redeDownload = Format.formatarInserirBanco(ri.get(0).getBytesRecebidos());
         Double redeUpload = Format.formatarInserirBanco(ri.get(0).getBytesEnviados());
         Double LivreDisco1 = Format.formatarInserirBanco(listaVolumes.get(0).getDisponivel());
-        Double LivreDisco2 = listaVolumes.size() == 2 ? Format.formatarInserirBanco(listaVolumes.get(1).getDisponivel()) : null;
-        Double LivreDisco3 = listaVolumes.size() == 3 ? Format.formatarInserirBanco(listaVolumes.get(2).getDisponivel()) : null;
+        Double LivreDisco2 = listaVolumes.size() > 1 ? Format.formatarInserirBanco(listaVolumes.get(1).getDisponivel()) : null;
+        Double LivreDisco3 = listaVolumes.size() > 2 ? Format.formatarInserirBanco(listaVolumes.get(2).getDisponivel()) : null;
         capturas.add(fkMaquina);
         capturas.add(fkEmpresa);
         capturas.add(cpuUso);
@@ -106,7 +107,7 @@ public class Inserts {
         Double cpuMetrica = null;
 
         // RAM
-        String ram = "n tem como pegar nome";
+        String ram = Conversor.formatarBytes(looca.getMemoria().getTotal());
         Double ramTotal = Format.formatarInserirBanco(looca.getMemoria().getTotal());
         Double ramMetrica = null;
 
@@ -140,7 +141,7 @@ public class Inserts {
                     + "ip, statusSistema, cpuPorcentagem, ramTotal, totalDisco1, "
                     + "totalDisco2, totalDisco3, cpuMetrica, ramMetrica, gatilhoDisco1, "
                     + "gatilhoDisco2, gatilhoDisco3, tempoAtividade, mac) VALUES"
-                    + "(?, ?, ?, CONVERT(DATE, GETDATE()), ?, "
+                    + "(?, ?, ?, CONVERT(DATE, GETDATE()), CAST(ROUND(?, 2, 1) AS NUMERIC(10, 2)), "
                     + "?, ?, ?, ?, ?, "
                     + "?, ?, ROUND(?, 2), ?, ?, "
                     + "?, ?, ?, ?, ?, "
@@ -169,7 +170,7 @@ public class Inserts {
         } else {
             System.out.println("Máquina já existente. Atualizando dados estáticos da máquina");
             conAzure.update("UPDATE Maquinas SET nomeMaquina = ?, serie = ?, sistemaOperacional = ?, processador = ?, ram = ?, nomeDisco1 = ?, nomeDisco2 = ?,"
-                    + "nomeDisco3 = ?, ip = ?, statusSistema = ?, cpuPorcentagem = ?, ramTotal = ?, totalDisco1 = ?, totalDisco2 = ?, totalDisco3 = ?, cpuMetrica = ?,"
+                    + "nomeDisco3 = ?, ip = ?, statusSistema = ?, cpuPorcentagem = CAST(ROUND(?, 2) AS NUMERIC(10, 2)), ramTotal = ?, totalDisco1 = ?, totalDisco2 = ?, totalDisco3 = ?, cpuMetrica = ?,"
                     + "ramMetrica = ?, gatilhoDisco1 = ?, gatilhoDisco2 = ?, gatilhoDisco3 = ?, tempoAtividade = ?, mac = ? WHERE idMaquina = ?", nomeMaquina, serie, sistemaOperacional, processador, ram, nomeDisco1,
                     nomeDisco2, nomeDisco3, ip, statusSistema, cpuPorcentagem, ramTotal, totalDisco1, totalDisco2, totalDisco3, cpuMetrica, ramMetrica, gatilhoDisco1,
                     gatilhoDisco2, gatilhoDisco3, tempoAtividade, mac, idMaquina);
