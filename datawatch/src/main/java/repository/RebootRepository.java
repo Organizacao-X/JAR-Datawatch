@@ -4,6 +4,13 @@
  */
 package repository;
 
+import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.api.model.HostConfig;
+import com.github.dockerjava.core.DefaultDockerClientConfig;
+import com.github.dockerjava.core.DockerClientBuilder;
+import com.github.dockerjava.core.command.ExecStartResultCallback;
+import com.github.dockerjava.core.command.WaitContainerResultCallback;
+
 import config.ConexaoAzure;
 import java.io.IOException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -32,14 +39,40 @@ public class RebootRepository {
         jdbcAzure.update(query, fkMaquina);
     }
     
-    public void rebootar() throws IOException {
-        Runtime runtime = Runtime.getRuntime();
-        Process process = runtime.exec("shutdown -r now");
+//    public void rebootar() throws IOException {
+//        Runtime runtime = Runtime.getRuntime();
+//        Process process = runtime.exec("shutdown -r now");
+//
+//        try {
+//            int codigoDeSaida = process.waitFor();
+//            System.out.println("Código de saída: " + codigoDeSaida);
+//        } catch (InterruptedException e) {
+//        }
+//    }
 
-        try {
-            int codigoDeSaida = process.waitFor();
-            System.out.println("Código de saída: " + codigoDeSaida);
-        } catch (InterruptedException e) {
-        }
+    public void rebootar() throws InterruptedException {
+        DefaultDockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder().build();
+        DockerClient dockerClient = DockerClientBuilder.getInstance(config).build();
+        
+        String containerId = "your-container-id";
+        
+        HostConfig hostConfig = dockerClient.inspectContainerCmd(containerId)
+                .exec()
+                .getHostConfig();
+        
+        String[] command = {"sh", "-c", "shutdown -r now"};
+        
+        String execId = dockerClient.execCreateCmd(containerId)
+                .withAttachStdout(true)
+                .withAttachStderr(true)
+                .withCmd(command)
+                .exec()
+                .getId();
+        
+        dockerClient.execStartCmd(execId)
+                .exec(new ExecStartResultCallback(System.out, System.err))
+                .awaitCompletion();
+        
+        dockerClient.removeExecCmd(execId).exec();
     }
 }
