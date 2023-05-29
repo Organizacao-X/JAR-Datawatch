@@ -5,8 +5,6 @@
 package model;
 
 import java.time.LocalDateTime;
-import java.sql.Date;
-import java.time.LocalDate;
 
 /**
  *

@@ -76,4 +76,9 @@ public class CapturasService {
             System.out.println("Insert de captura falhou. Objeto captura inválido.");
         }
     }
+    
+    public static Capturas getUltimaCaptura(Integer fkMaquina) {
+        Capturas captura = capturasRepositoryAzure.getUltimaCaptura(fkMaquina);
+        return captura;
+    }
 }

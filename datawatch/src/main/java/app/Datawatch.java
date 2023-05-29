@@ -17,6 +17,7 @@ import model.Maquinas;
 import model.Usuarios;
 import org.json.JSONObject;
 import service.CapturasService;
+import service.LogService;
 import service.MaquinasService;
 import service.RebootService;
 import service.UsuariosService;
@@ -101,8 +102,10 @@ public class Datawatch {
                 CapturasService.insertCapturaMySQL(captura);
                 logInsert.criarLog();
 
+                LogService.criarAlerta(maquina);
+                
                 RebootService.rebootar(maquina.getIdMaquina());
-                Thread.sleep(10000);
+                Thread.sleep(15000);
             }
         }
     }

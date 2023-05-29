@@ -27,11 +27,15 @@ public class MaquinasService {
     public static Maquinas setMaquina() {
         //<editor-fold defaultstate="collapsed" desc="sets da máquina com os dados do looca">
         Maquinas maquina = new Maquinas();
+        Double ramTotal = Util.formatarParaDouble(looca.getMemoria().getTotal());
         List<RedeInterface> ri = looca.getRede().getGrupoDeInterfaces().getInterfaces();
         List<Disco> discos = looca.getGrupoDeDiscos().getDiscos();
         Disco disco1 = discos.get(0);
         Disco disco2 = discos.size() > 1 ? discos.get(1) : null;
         Disco disco3 = discos.size() > 2 ? discos.get(2) : null;
+        Double totalDisco1 = Util.formatarParaDouble(disco1.getTamanho());
+        Double totalDisco2 = disco2 != null ? Util.formatarParaDouble(disco2.getTamanho()) : null;
+        Double totalDisco3 = disco3 != null ? Util.formatarParaDouble(disco3.getTamanho()) : null;
         
         maquina.setCpuPorcentagem(looca.getProcessador().getUso());
         maquina.setIp(ri.get(ri.size() - 1).getEnderecoIpv4().get(0));
@@ -42,13 +46,20 @@ public class MaquinasService {
         maquina.setNomeMaquina(looca.getRede().getParametros().getHostName());
         maquina.setProcessador(looca.getProcessador().getNome());
         maquina.setRam(Conversor.formatarBytes(looca.getMemoria().getTotal()));
-        maquina.setRamTotal(Util.formatarParaDouble(looca.getMemoria().getTotal()));
+        maquina.setRamTotal(ramTotal);
         maquina.setSistemaOperacional(looca.getSistema().getSistemaOperacional());
         maquina.setTempoAtividade(Integer.valueOf(looca.getSistema().getTempoDeAtividade() + ""));
-        maquina.setTotalDisco1(Util.formatarParaDouble(disco1.getTamanho()));
-        maquina.setTotalDisco2(disco2 != null ? Util.formatarParaDouble(disco2.getTamanho()) : null);
-        maquina.setTotalDisco3(disco3 != null ? Util.formatarParaDouble(disco3.getTamanho()) : null);
+        maquina.setTotalDisco1(totalDisco1);
+        maquina.setTotalDisco2(totalDisco2);
+        maquina.setTotalDisco3(totalDisco3);
         maquina.setSerie(Util.randomizeSerie());
+        
+        maquina.setCpuMetrica(90.0);
+        maquina.setRamMetrica(ramTotal * 0.85);
+        maquina.setGatilhoDisco1(totalDisco1 * 0.7);
+        maquina.setGatilhoDisco2(totalDisco2 == null ? null : totalDisco2 * 0.70);
+        maquina.setGatilhoDisco3(totalDisco3 == null ? null : totalDisco3 * 0.70);
+        
         return maquina;
         //</editor-fold>
     }
@@ -71,11 +82,6 @@ public class MaquinasService {
         Maquinas maquinaNova = setMaquina();
         maquinaNova.setIdMaquina(maquina.getIdMaquina());
         maquinaNova.setFkEmpresa(maquina.getFkEmpresa());
-        maquinaNova.setCpuMetrica(maquina.getCpuMetrica());
-        maquinaNova.setGatilhoDisco1(maquina.getGatilhoDisco1());
-        maquinaNova.setGatilhoDisco2(maquina.getGatilhoDisco2());
-        maquinaNova.setGatilhoDisco3(maquina.getGatilhoDisco3());
-        maquinaNova.setRamMetrica(maquina.getRamMetrica());
         maquinaNova.setSerie(maquina.getSerie());
         
         maquinasRepositoryAzure.updateMaquina(maquinaNova);

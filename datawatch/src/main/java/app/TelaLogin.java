@@ -1,9 +1,18 @@
 package app;
 
+import config.log.Log;
+import config.log.LogEntrada;
+import config.slack.Slack;
+import config.slack.SlackEnum;
+import static config.slack.SlackEnumController.logMessage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
 import model.Usuarios;
+import org.json.JSONObject;
 import service.UsuariosService;
 
 public class TelaLogin extends javax.swing.JFrame {
@@ -202,14 +211,37 @@ public class TelaLogin extends javax.swing.JFrame {
         String login = inputEmail.getText();
         String senha = inputSenha.getText();
 
+        JSONObject json = new JSONObject();
+
         usuario = UsuariosService.login(login, senha);
 
         if (usuario != null) {
-            System.out.println(String.format("Usuario %s logado com sucesso.", usuario.getNomeUsuario()));
-            lblMensagem.setText("Login realizado com sucesso! Conectando...");
-            tempo.start();
+            try {
+                System.out.println(String.format("Usuario %s logado com sucesso.", usuario.getNomeUsuario()));
+                
+                Slack.sendMessage(json.put("text", logMessage(SlackEnum.INFO_LOGIN)));
+                
+                Log logEntrada = new LogEntrada(senha, usuario.getNomeUsuario(), senha);
+                logEntrada.criarLog();
+                
+                lblMensagem.setText("Login realizado com sucesso! Conectando...");
+                tempo.start();
+            } catch (IOException ex) {
+                Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             System.out.println("Informações de login ou senha fornecidas inválidas.\n");
+            
+            try {
+                Slack.sendMessage(json.put("text", logMessage(SlackEnum.WARNING_LOGIN_FALHO)));
+            } catch (IOException ex) {
+                Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             lblMensagem.setText("USUÁRIO E/OU SENHA INVÁLIDO!");
         }
     }//GEN-LAST:event_btnEntrarActionPerformed

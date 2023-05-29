@@ -5,7 +5,9 @@
 package repository;
 
 import config.ConexaoAzure;
+import java.util.List;
 import model.Capturas;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -34,5 +36,14 @@ public class CapturasRepositoryAzure {
                 captura.getLivreDisco1(),
                 captura.getLivreDisco2(),
                 captura.getLivreDisco3());
+    }
+
+    public Capturas getUltimaCaptura(Integer fkMaquina) {
+        String query = "SELECT TOP 1 * FROM Capturas WHERE fkMaquina = ? ORDER BY idCaptura DESC;";
+        List<Capturas> captura = jdbcAzure.query(query, new BeanPropertyRowMapper(Capturas.class), fkMaquina);
+        if (!captura.isEmpty()) {
+            return captura.get(0);
+        }
+        return null;
     }
 }

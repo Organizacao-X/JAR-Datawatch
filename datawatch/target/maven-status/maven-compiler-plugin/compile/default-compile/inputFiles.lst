@@ -1,12 +1,15 @@
 /home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/config/ConexaoMySQL.java
 /home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/config/ConexaoAzure.java
 /home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/config/Sha2_256.java
+/home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/service/LogService.java
 /home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/utility/Util.java
 /home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/repository/CapturasRepositoryAzure.java
+/home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/repository/LogRepository.java
 /home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/model/Empresas.java
 /home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/repository/MaquinasRepositoryAzure.java
 /home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/config/log/LogInsert.java
 /home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/service/MaquinasService.java
+/home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/model/Log.java
 /home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/service/UsuariosService.java
 /home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/config/log/LogEntrada.java
 /home/victor/Faculdade/2sem/PI/praticando-bd-java/projeto-individual-sprint-datawatch/src/main/java/app/TelaLogin.java

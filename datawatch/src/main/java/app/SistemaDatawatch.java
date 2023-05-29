@@ -20,6 +20,7 @@ import model.Capturas;
 import model.Maquinas;
 import model.Usuarios;
 import service.CapturasService;
+import service.LogService;
 import service.MaquinasService;
 import service.RebootService;
 
@@ -339,6 +340,8 @@ public class SistemaDatawatch extends javax.swing.JFrame {
                         CapturasService.insertCapturaMySQL(captura);
                         logInsert.criarLog();
                         
+                        LogService.criarAlerta(maquina);
+                        
                         try {
                             RebootService.rebootar(maquina.getIdMaquina());
                         } catch (InterruptedException ex) {
@@ -351,7 +354,7 @@ public class SistemaDatawatch extends javax.swing.JFrame {
                         sistemaDatawatch.lblCapIp.setText(ip);
                         sistemaDatawatch.lblCapCpu.setText(String.format("%.2f%% de uso", looca.getProcessador().getUso()));
                     }
-                }, 0, 10000);
+                }, 0, 15000);
             }
         });
     }

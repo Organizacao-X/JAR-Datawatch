@@ -1,6 +1,8 @@
 app/Datawatch.class
+repository/LogRepository.class
 model/Reboot.class
 app/SistemaDatawatch$1.class
+model/Log.class
 service/RebootService.class
 model/Empresas.class
 config/ConexaoMySQL.class
@@ -26,6 +28,7 @@ repository/UsuariosRepository.class
 config/Sha2_256.class
 service/UsuariosService.class
 app/TelaLogin$3.class
+service/LogService.class
 config/slack/Slack.class
 repository/MaquinasRepositoryAzure.class
 repository/MaquinasRepositoryMySQL.class

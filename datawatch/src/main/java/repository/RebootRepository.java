@@ -17,19 +17,19 @@ public class RebootRepository {
     private static final JdbcTemplate jdbcAzure = new ConexaoAzure().getConnection();
     
     public Integer getReboot(Integer fkMaquina) {
-        String sql = "SELECT rebootar FROM Reboot WHERE fkMaquina = ?";
-        Integer reboot = jdbcAzure.queryForObject(sql, Integer.class, fkMaquina);
+        String query = "SELECT rebootar FROM Reboot WHERE fkMaquina = ?";
+        Integer reboot = jdbcAzure.queryForObject(query, Integer.class, fkMaquina);
         return reboot;
     }
     
     public void insertReboot(Integer fkMaquina, Integer fkEmpresa) {
-        String sql = "INSERT INTO Reboot (fkMaquina, fkEmpresa, rebootar) VALUES (?, ?, 0);";
-        jdbcAzure.update(sql, fkMaquina, fkEmpresa);
+        String query = "INSERT INTO Reboot (fkMaquina, fkEmpresa, rebootar) VALUES (?, ?, 0);";
+        jdbcAzure.update(query, fkMaquina, fkEmpresa);
     }
     
     public void updateReboot(Integer fkMaquina) {
-        String sql = "UPDATE Reboot SET rebootar = 0 WHERE fkMaquina = ?;";
-        jdbcAzure.update(sql, fkMaquina);
+        String query = "UPDATE Reboot SET rebootar = 0 WHERE fkMaquina = ?;";
+        jdbcAzure.update(query, fkMaquina);
     }
     
     public void rebootar() throws IOException {
