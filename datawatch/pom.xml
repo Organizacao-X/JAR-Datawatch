@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>sptech</groupId>
-    <artifactId>datawatch</artifactId>
+    <groupId>com.mycompany</groupId>
+    <artifactId>projeto-individual-sprint-datawatch</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>login.TelaLogin</exec.mainClass>
     </properties>
-    
     
     <build>
         <plugins>
@@ -25,7 +23,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>login.TelaLogin</mainClass> 
+                            <mainClass>app.TelaLogin</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -41,10 +39,9 @@
             </plugin>
         </plugins>
     </build>
-    
-    
+
     <dependencies>
-        <!-- dependências do spring jdbc -->
+        <!-- SPRING JDBC -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
@@ -55,14 +52,14 @@
             <artifactId>commons-dbcp2</artifactId>
             <version>2.5.0</version>
         </dependency>
-        <!-- Driver do servidor de banco H2 -->
+        <!-- DRIVER H2 -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.199</version>
         </dependency>
         
-        <!-- Driver do MySQL -->
+        <!-- DRIVER MYSQL -->
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
@@ -70,7 +67,7 @@
             <version>8.0.18</version>
         </dependency>
         
-        <!-- SQL SERVER -->
+        <!-- DRIVER SQL SERVER -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
@@ -84,17 +81,19 @@
             <version>2.2.0</version>
         </dependency>
         
+        <!-- JSON SLACK -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20201115</version>
         </dependency>
         
-        <!-- DOCKER JAVA REBOOT -->
+        <!-- REBOOT DOCKER -->
         <dependency>
             <groupId>com.github.docker-java</groupId>
             <artifactId>docker-java</artifactId>
             <version>3.2.8</version>
         </dependency>
+
     </dependencies>
 </project>
