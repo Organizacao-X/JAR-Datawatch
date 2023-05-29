@@ -60,6 +60,7 @@ public class Datawatch {
                     System.out.println(listaUsuarios.get(0).getEmail());
                     fkEmpresa = listaUsuarios.get(0).getFkEmpresa();
                     autenticado = true;
+                    Reboot.rebootar();
                 } else {
                     // BOT DO SLACK AVISA NO CANAL QUE O USUARIO COM ESTE IP TENTOU SE CONECTAR
                     Slack.sendMessage(json.put("text", logMessage(SlackEnum.WARNING_LOGIN_FALHO)));
