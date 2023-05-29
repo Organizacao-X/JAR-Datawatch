@@ -16,7 +16,7 @@ public class Conexao {
             dataSource​.setDriverClassName("com.mysql.cj.jdbc.Driver");
             dataSource​.setUrl("jdbc:mysql://172.17.0.2:3306/datawatch?serverTimezone=UTC&autoReconnect=true&useSSL=false");
             dataSource​.setUsername("root");
-            dataSource​.setPassword("datawatch");
+            dataSource​.setPassword("Almanaque2023!");
         } else {
 
             dataSource​.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
