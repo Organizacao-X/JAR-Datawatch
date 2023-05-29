@@ -106,9 +106,17 @@ public class Usuarios {
         return uuid;
     }
 
+<<<<<<< HEAD
     public void setFkEmpresa(String uuid) {
         this.uuid = uuid;
     }
+=======
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+    
+    
+>>>>>>> af717586d9878de866cc5e52a9e361a9a0a9f7ba
 
     @Override
     public String toString() {

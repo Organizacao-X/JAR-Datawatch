@@ -1,5 +1,8 @@
 package sptech.datawatch;
 
+import Log.Log;
+import Log.LogEntrada;
+import Log.LogInsert;
 import com.github.britooo.looca.api.core.Looca;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -50,6 +53,9 @@ public class Datawatch {
                     // BOT DO SLACK AVISA NO CANAL QUE O USUARIO COM ESTE IP SE CONECTOU
                     Slack.sendMessage(json.put("text", logMessage(SlackEnum.INFO_LOGIN)));
                     
+                    Log logEntrada = new LogEntrada(senha, listaUsuarios.get(0).getNomeUsuario(), senha);
+                    logEntrada.criarLog();
+                    
                     System.out.println("Login realizado com sucesso! Conectando...");
                     System.out.println(listaUsuarios.get(0).getEmail());
                     fkEmpresa = listaUsuarios.get(0).getFkEmpresa();
@@ -83,6 +89,7 @@ public class Datawatch {
                 Integer idMaquina = maquina.getIdMaquina();
                 // UPDATE NOS DADOS ESTÁTICOS DA MÁQUINA NO BD CASO EXISTA
                 inserts.Inserts.inserirDadosMaquinaEstatico(jdbcAzure, jdbcMysql, looca, null, idMaquina, true);
+//                Log logInput = new LogInsert("", maquina.getNomeMaquina(), "");
             }
 
             // LOOP PARA CAPTURAR DADOS VOLÁTEIS
@@ -92,6 +99,9 @@ public class Datawatch {
 
                 // INSERE UMA CAPTURA PARA OS DADOS VOLÁTEIS DESTA MÁQUINA
                 inserts.Inserts.capturarInserirDados(maquina.getIdMaquina(), maquina.getFkEmpresa(), jdbcAzure, jdbcMysql);
+                
+                Log logInput = new LogInsert("", maquina.getNomeMaquina(), "");
+                logInput.criarLog();
                 
                 System.out.println(maquina.getIdMaquina());
                 System.out.println(maquina.getFkEmpresa());

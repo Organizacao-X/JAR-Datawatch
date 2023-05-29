@@ -5,6 +5,7 @@
 package selects;
 
 import com.github.britooo.looca.api.core.Looca;
+import com.github.britooo.looca.api.group.rede.RedeInterface;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -30,7 +31,8 @@ public class Selects {
     
     public static String pegarMac() {
         Looca looca = new Looca();
-        return looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getEnderecoMac();
+        List<RedeInterface> ri = looca.getRede().getGrupoDeInterfaces().getInterfaces();
+        return ri.get(ri.size() - 1 ).getEnderecoMac();
     }
     
     public static Boolean reebotar(JdbcTemplate conAzure, Integer fkMaquina, Integer fkEmpresa) {

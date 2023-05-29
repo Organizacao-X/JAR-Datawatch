@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>sptech.datawatch.Datawatch</exec.mainClass>
+        <exec.mainClass>login.TelaLogin</exec.mainClass>
     </properties>
     
     
@@ -25,7 +25,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>sptech.datawatch.Datawatch</mainClass> 
+                            <mainClass>login.TelaLogin</mainClass> 
                         </manifest>
                     </archive>
                 </configuration>
@@ -88,6 +88,13 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20201115</version>
+        </dependency>
+        
+        <!-- DOCKER JAVA REBOOT -->
+        <dependency>
+            <groupId>com.github.docker-java</groupId>
+            <artifactId>docker-java</artifactId>
+            <version>3.2.8</version>
         </dependency>
     </dependencies>
 </project>

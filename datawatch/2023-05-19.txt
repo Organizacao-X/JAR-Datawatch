@@ -1,4 +1,0 @@
-Fazendo um log simples
-2023-05-19 22:31:07org.springframework.jdbc.core.BeanPropertyRowMapper@5dfcfece: Joãozinho Fez uma alteração nesta hora: 
-Fazendo um log simples
-2023-05-19 22:31:47 org.springframework.jdbc.core.BeanPropertyRowMapper@5dfcfece: Joãozinho Fez uma alteração nesta hora: 

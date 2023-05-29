@@ -73,8 +73,5 @@ public abstract class Log {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-        
-    
+    }    
 }

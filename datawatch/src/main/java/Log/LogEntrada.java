@@ -28,9 +28,7 @@ public class LogEntrada extends Log{
 
     public LogEntrada(String nomeDocumento, String nomeLogado, String descricao) {
         super(nomeDocumento, nomeLogado, descricao);
-    }
-    
-    
+    }    
 
     @Override
     public void criarLog() {
@@ -49,7 +47,7 @@ public class LogEntrada extends Log{
         
         setNomeDocumento(dataFormatada);
         
-        String titulo = String.format("%s_%s.txt", dataFormatada, getnomeLogado());
+        String titulo = String.format("%s_sistema.txt", dataFormatada);
         File arquivo = new File(titulo);
         
         
@@ -66,9 +64,9 @@ public class LogEntrada extends Log{
         }
         
         
-          List<String> lista = new ArrayList<>();
+        List<String> lista = new ArrayList<>();
                     
-          lista.add(dataHoraFormatada + " " + getnomeLogado() + " Entrou no sistema!" );
+        lista.add(dataHoraFormatada + " " + getnomeLogado() + " Entrou no sistema!" );
           
           
             //Files.write(Paths.get(arquivo.getPath()), lista, StandardOpenOption.APPEND);
