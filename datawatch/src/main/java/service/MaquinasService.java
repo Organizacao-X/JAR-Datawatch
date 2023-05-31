@@ -53,6 +53,7 @@ public class MaquinasService {
         maquina.setTotalDisco2(totalDisco2);
         maquina.setTotalDisco3(totalDisco3);
         maquina.setSerie(Util.randomizeSerie());
+        maquina.setStatusSistema(1);
         
         maquina.setCpuMetrica(90.0);
         maquina.setRamMetrica(ramTotal * 0.85);
