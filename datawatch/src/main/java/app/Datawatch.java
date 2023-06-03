@@ -80,12 +80,12 @@ public class Datawatch {
             if (maquina == null) {
                 maquina = MaquinasService.setMaquina();
                 maquina.setFkEmpresa(usuario.getFkEmpresa());
-                MaquinasService.insertMaquinaAzure(maquina);
-                MaquinasService.insertMaquinaMySQL(maquina);
-                RebootService.insertReboot(maquina.getIdMaquina(), maquina.getFkEmpresa());
+//                MaquinasService.insertMaquinaAzure(maquina);
+//                MaquinasService.insertMaquinaMySQL(maquina);
+//                RebootService.insertReboot(maquina.getIdMaquina(), maquina.getFkEmpresa());
             } else {
-                maquina = MaquinasService.updateMaquinaAzure(maquina);
-                MaquinasService.updateMaquinaMySQL(maquina);
+//                maquina = MaquinasService.updateMaquinaAzure(maquina);
+//                MaquinasService.updateMaquinaMySQL(maquina);
             }
             
             // Setando ID maquina e FK empresa para as capturas
@@ -98,13 +98,13 @@ public class Datawatch {
             // Loop da captura dos dados
             while (true) {
                 CapturasService.setCaptura(captura);
-                CapturasService.insertCapturaAzure(captura);
-                CapturasService.insertCapturaMySQL(captura);
+//                CapturasService.insertCapturaAzure(captura);
+//                CapturasService.insertCapturaMySQL(captura);
                 logInsert.criarLog();
 
-                LogService.criarAlerta(maquina);
+//                LogService.criarAlerta(maquina);
                 
-                RebootService.rebootar(maquina.getIdMaquina());
+//                RebootService.rebootar(maquina.getIdMaquina());
                 Thread.sleep(15000);
             }
         }

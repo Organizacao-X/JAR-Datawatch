@@ -6,6 +6,7 @@ package service;
 
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
+import com.github.britooo.looca.api.group.discos.Volume;
 import com.github.britooo.looca.api.group.rede.RedeInterface;
 import com.github.britooo.looca.api.util.Conversor;
 import java.util.List;
@@ -30,36 +31,44 @@ public class MaquinasService {
         Double ramTotal = Util.formatarParaDouble(looca.getMemoria().getTotal());
         List<RedeInterface> ri = looca.getRede().getGrupoDeInterfaces().getInterfaces();
         List<Disco> discos = looca.getGrupoDeDiscos().getDiscos();
-        Disco disco1 = discos.get(0);
-        Disco disco2 = discos.size() > 1 ? discos.get(1) : null;
-        Disco disco3 = discos.size() > 2 ? discos.get(2) : null;
-        Double totalDisco1 = Util.formatarParaDouble(disco1.getTamanho());
-        Double totalDisco2 = disco2 != null ? Util.formatarParaDouble(disco2.getTamanho()) : null;
-        Double totalDisco3 = disco3 != null ? Util.formatarParaDouble(disco3.getTamanho()) : null;
+        for (Disco disco : discos) {
+            System.out.println(disco);
+        }
         
+        List<Volume> volumes = looca.getGrupoDeDiscos().getVolumes();
+        for (Volume volume : volumes) {
+            System.out.println(volume);
+        }
+//        Disco disco1 = discos.get(0);
+//        Disco disco2 = discos.size() > 1 ? discos.get(1) : null;
+//        Disco disco3 = discos.size() > 2 ? discos.get(2) : null;
+//        Double totalDisco1 = Util.formatarParaDouble(disco1.getTamanho());
+//        Double totalDisco2 = disco2 != null ? Util.formatarParaDouble(disco2.getTamanho()) : null;
+//        Double totalDisco3 = disco3 != null ? Util.formatarParaDouble(disco3.getTamanho()) : null;
+//        
         maquina.setCpuPorcentagem(looca.getProcessador().getUso());
         maquina.setIp(ri.get(ri.size() - 1).getEnderecoIpv4().get(0));
         maquina.setMac(ri.get(ri.size() - 1).getEnderecoMac());
-        maquina.setNomeDisco1(disco1.getModelo());
-        maquina.setNomeDisco2(disco2 != null ? disco2.getModelo() : null);
-        maquina.setNomeDisco3(disco3 != null ? disco3.getModelo() : null);
+//        maquina.setNomeDisco1(disco1.getModelo());
+//        maquina.setNomeDisco2(disco2 != null ? disco2.getModelo() : null);
+//        maquina.setNomeDisco3(disco3 != null ? disco3.getModelo() : null);
         maquina.setNomeMaquina(looca.getRede().getParametros().getHostName());
         maquina.setProcessador(looca.getProcessador().getNome());
         maquina.setRam(Conversor.formatarBytes(looca.getMemoria().getTotal()));
         maquina.setRamTotal(ramTotal);
         maquina.setSistemaOperacional(looca.getSistema().getSistemaOperacional());
         maquina.setTempoAtividade(Integer.valueOf(looca.getSistema().getTempoDeAtividade() + ""));
-        maquina.setTotalDisco1(totalDisco1);
-        maquina.setTotalDisco2(totalDisco2);
-        maquina.setTotalDisco3(totalDisco3);
+//        maquina.setTotalDisco1(totalDisco1);
+//        maquina.setTotalDisco2(totalDisco2);
+//        maquina.setTotalDisco3(totalDisco3);
         maquina.setSerie(Util.randomizeSerie());
         maquina.setStatusSistema(1);
         
         maquina.setCpuMetrica(90.0);
         maquina.setRamMetrica(ramTotal * 0.85);
-        maquina.setGatilhoDisco1(totalDisco1 * 0.7);
-        maquina.setGatilhoDisco2(totalDisco2 == null ? null : totalDisco2 * 0.70);
-        maquina.setGatilhoDisco3(totalDisco3 == null ? null : totalDisco3 * 0.70);
+//        maquina.setGatilhoDisco1(totalDisco1 * 0.7);
+//        maquina.setGatilhoDisco2(totalDisco2 == null ? null : totalDisco2 * 0.70);
+//        maquina.setGatilhoDisco3(totalDisco3 == null ? null : totalDisco3 * 0.70);
         
         return maquina;
         //</editor-fold>

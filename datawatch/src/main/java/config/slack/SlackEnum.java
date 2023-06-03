@@ -5,5 +5,6 @@ public enum SlackEnum {
     WARNING_LOGIN_FALHO,
     WARNING,
     ERROR,
+    OVER_LIMIT,
     DEBBUG;
 }

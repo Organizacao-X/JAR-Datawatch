@@ -7,16 +7,24 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class SlackEnumController {
+
+        private static LocalDateTime dataHoraAtual = LocalDateTime.now();
+        private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        private static String dataHoraFormatada = dataHoraAtual.format(formatter);
+        private static List<RedeInterface> ri = new Looca().getRede().getGrupoDeInterfaces().getInterfaces();
+        private static String ip = ri.get(ri.size() - 1).getEnderecoIpv4().get(0);
+                
+        private static String mensagem = null;
     
     public static String logMessage(SlackEnum level) {
         
-        LocalDateTime dataHoraAtual = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        String dataHoraFormatada = dataHoraAtual.format(formatter);
-        List<RedeInterface> ri = new Looca().getRede().getGrupoDeInterfaces().getInterfaces();
-        String ip = ri.get(ri.size() - 1).getEnderecoIpv4().get(0);
-                
-        String mensagem = null;
+//        LocalDateTime dataHoraAtual = LocalDateTime.now();
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//        String dataHoraFormatada = dataHoraAtual.format(formatter);
+//        List<RedeInterface> ri = new Looca().getRede().getGrupoDeInterfaces().getInterfaces();
+//        String ip = ri.get(ri.size() - 1).getEnderecoIpv4().get(0);
+//                
+//        String mensagem = null;
         
         switch (level) {
             case INFO_LOGIN:
@@ -40,5 +48,10 @@ public class SlackEnumController {
                 
         }
                 return mensagem;
+    }
+    
+    public static String slackAlertUso(SlackEnum level, String nomeComponente) {
+        mensagem = String.format(" :red_circle: *[WARNING]* O componente [%s] ultrapassou o limite estipulado\t\t", nomeComponente);
+        return mensagem;
     }
 }
