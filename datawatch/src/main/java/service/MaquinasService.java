@@ -33,11 +33,15 @@ public class MaquinasService {
         List<Disco> discos = looca.getGrupoDeDiscos().getDiscos();
         for (Disco disco : discos) {
             System.out.println(disco);
+            System.out.println(Conversor.formatarBytes(disco.getTamanho()));
         }
         
         List<Volume> volumes = looca.getGrupoDeDiscos().getVolumes();
         for (Volume volume : volumes) {
+            System.out.println();
             System.out.println(volume);
+            System.out.println(Conversor.formatarBytes(volume.getTotal()));
+            System.out.println(Conversor.formatarBytes(volume.getDisponivel()));
         }
 //        Disco disco1 = discos.get(0);
 //        Disco disco2 = discos.size() > 1 ? discos.get(1) : null;
