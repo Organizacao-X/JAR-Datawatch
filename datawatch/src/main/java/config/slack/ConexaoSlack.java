@@ -6,15 +6,17 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import org.json.JSONObject;
+import repository.SlackRepository;
+import model.Slack;
 
-public class Slack {
+public class ConexaoSlack {
 
     private static final HttpClient client = HttpClient.newHttpClient();
-    private static final String URL = "https://hooks.slack.com/services/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";
+    private static final Slack slack = SlackRepository.obterWebhook();
 
     public static void sendMessage(JSONObject content) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder(
-                URI.create(URL))
+                URI.create(slack.getWebhook()))
                 .header("accept", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(content.toString()))
                 .build();

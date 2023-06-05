@@ -7,7 +7,7 @@ package app;
 import config.log.Log;
 import config.log.LogEntrada;
 import config.log.LogInsert;
-import config.slack.Slack;
+import config.slack.ConexaoSlack;
 import config.slack.SlackEnum;
 import static config.slack.SlackEnumController.logMessage;
 import java.io.IOException;
@@ -55,14 +55,14 @@ public class Datawatch {
             if (usuario != null) {
                 isLoggedIn = true;
 
-                Slack.sendMessage(json.put("text", logMessage(SlackEnum.INFO_LOGIN)));
+                ConexaoSlack.sendMessage(json.put("text", logMessage(SlackEnum.INFO_LOGIN)));
 
                 Log logEntrada = new LogEntrada(senha, usuario.getNomeUsuario(), senha);
                 logEntrada.criarLog();
                 
                 System.out.println(String.format("Usuário %s logado com sucesso!", usuario.getNomeUsuario()));
             } else {
-                Slack.sendMessage(json.put("text", logMessage(SlackEnum.WARNING_LOGIN_FALHO)));
+                ConexaoSlack.sendMessage(json.put("text", logMessage(SlackEnum.WARNING_LOGIN_FALHO)));
                 System.out.println("Informações de login ou senha fornecidas inválidas.\n");
             }
         }

@@ -2,7 +2,7 @@ package app;
 
 import config.log.Log;
 import config.log.LogEntrada;
-import config.slack.Slack;
+import config.slack.ConexaoSlack;
 import config.slack.SlackEnum;
 import static config.slack.SlackEnumController.logMessage;
 import java.awt.event.ActionEvent;
@@ -219,7 +219,7 @@ public class TelaLogin extends javax.swing.JFrame {
             try {
                 System.out.println(String.format("Usuario %s logado com sucesso.", usuario.getNomeUsuario()));
                 
-                Slack.sendMessage(json.put("text", logMessage(SlackEnum.INFO_LOGIN)));
+                ConexaoSlack.sendMessage(json.put("text", logMessage(SlackEnum.INFO_LOGIN)));
                 
                 Log logEntrada = new LogEntrada(senha, usuario.getNomeUsuario(), senha);
                 logEntrada.criarLog();
@@ -235,7 +235,7 @@ public class TelaLogin extends javax.swing.JFrame {
             System.out.println("Informações de login ou senha fornecidas inválidas.\n");
             
             try {
-                Slack.sendMessage(json.put("text", logMessage(SlackEnum.WARNING_LOGIN_FALHO)));
+                ConexaoSlack.sendMessage(json.put("text", logMessage(SlackEnum.WARNING_LOGIN_FALHO)));
             } catch (IOException ex) {
                 Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
             } catch (InterruptedException ex) {
