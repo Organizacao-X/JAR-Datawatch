@@ -55,17 +55,17 @@ public class LogService {
             queryValues.add(value);
         }
 
-        if (captura.getLivreDisco1() <= maquina.getGatilhoDisco1()) {
+        if (maquina.getTotalDisco1() - captura.getLivreDisco1() >= maquina.getGatilhoDisco1()) {
             value = String.format("(12, %d, %d, '%s')", fkMaquina, fkEmpresa, dataHora);
             queryValues.add(value);
         }
 
-        if (captura.getLivreDisco1() >= (maquina.getTotalDisco1() * 0.9)) {
+        if (maquina.getTotalDisco1() - captura.getLivreDisco1() >= (maquina.getTotalDisco1() * 0.9)) {
             value = String.format("(3, %d, %d, '%s')", fkMaquina, fkEmpresa, dataHora);
             queryValues.add(value);
         }
 
-        if (captura.getLivreDisco1() >= (maquina.getTotalDisco1() * 0.98)) {
+        if (maquina.getTotalDisco1() - captura.getLivreDisco1() >= (maquina.getTotalDisco1() * 0.98)) {
             value = String.format("(5, %d, %d, '%s')", fkMaquina, fkEmpresa, dataHora);
             queryValues.add(value);
         }
@@ -76,16 +76,16 @@ public class LogService {
                 queryValues.add(value);
             }
 
-            if (captura.getLivreDisco2() <= maquina.getGatilhoDisco2()) {
+            if (maquina.getTotalDisco2() - captura.getLivreDisco2() >= maquina.getGatilhoDisco2()) {
                 value = String.format("(12, %d, %d, '%s')", fkMaquina, fkEmpresa, dataHora);
                 queryValues.add(value);
             }
 
-            if (captura.getLivreDisco2() >= (maquina.getTotalDisco2() * 0.9)) {
+            if (maquina.getTotalDisco2() - captura.getLivreDisco2() >= (maquina.getTotalDisco2() * 0.9)) {
                 value = String.format("(3, %d, %d, '%s')", fkMaquina, fkEmpresa, dataHora);
                 queryValues.add(value);
             }
-            if (captura.getLivreDisco2() >= (maquina.getTotalDisco2() * 0.98)) {
+            if (maquina.getTotalDisco2() - captura.getLivreDisco2() >= (maquina.getTotalDisco2() * 0.98)) {
                 value = String.format("(5, %d, %d, '%s')", fkMaquina, fkEmpresa, dataHora);
                 queryValues.add(value);
             }
@@ -97,17 +97,17 @@ public class LogService {
                 queryValues.add(value);
             }
 
-            if (captura.getLivreDisco3() <= maquina.getGatilhoDisco3()) {
+            if (maquina.getTotalDisco3() - captura.getLivreDisco3() >= maquina.getGatilhoDisco3()) {
                 value = String.format("(12, %d, %d, '%s')", fkMaquina, fkEmpresa, dataHora);
                 queryValues.add(value);
             }
 
-            if (captura.getLivreDisco3() >= (maquina.getTotalDisco3() * 0.9)) {
+            if (maquina.getTotalDisco3() - captura.getLivreDisco3() >= (maquina.getTotalDisco3() * 0.9)) {
                 value = String.format("(3, %d, %d, '%s')", fkMaquina, fkEmpresa, dataHora);
                 queryValues.add(value);
             }
 
-            if (captura.getLivreDisco3() >= (maquina.getTotalDisco3() * 0.98)) {
+            if (maquina.getTotalDisco3() - captura.getLivreDisco3() >= (maquina.getTotalDisco3() * 0.98)) {
                 value = String.format("(5, %d, %d, '%s')", fkMaquina, fkEmpresa, dataHora);
                 queryValues.add(value);
             }
