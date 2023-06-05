@@ -18,6 +18,7 @@ import repository.LogRepository;
 public class LogService {
 
     private static final LogRepository logRepository = new LogRepository();
+    private static Integer contador = 0;
 
     public static void criarAlerta(Maquinas maquina) {
         Integer fkMaquina = maquina.getIdMaquina();
@@ -27,6 +28,7 @@ public class LogService {
 
         List<String> queryValues = new ArrayList();
         String value = "";
+
 
         if (captura.getCpuUso() == null) {
             // insert tabela alerta dado CPU não capturado
@@ -46,8 +48,13 @@ public class LogService {
         }
 
         if (captura.getRamUso() >= maquina.getRamMetrica()) {
-            value = String.format("(11, %d, %d, '%s')", fkMaquina, fkEmpresa, dataHora);
-            queryValues.add(value);
+            contador++;
+            if (contador == 10) {
+                value = String.format("(11, %d, %d, '%s')", fkMaquina, fkEmpresa, dataHora);
+                queryValues.add(value);
+                contador = 0;
+            } else {
+            }
         }
 
         if (captura.getLivreDisco1() == null) {
@@ -117,7 +124,7 @@ public class LogService {
             value = String.format("(8, %d, %d, '%s')", fkMaquina, fkEmpresa, dataHora);
             queryValues.add(value);
         }
-        
+
         String values = queryValues.toString().replaceAll("\\[|\\]", "");
         if (!values.isBlank()) {
             logRepository.insertLog(values + ";");
