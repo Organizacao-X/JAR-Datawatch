@@ -48,7 +48,7 @@ public class MaquinasService {
         Disco disco1 = discos.get(0);
         Disco disco2 = discos.size() > 1 ? discos.get(1) : null;
         Disco disco3 = discos.size() > 2 ? discos.get(2) : null;
-        Double totalDisco1 = Util.formatarParaDouble(disco1.getTamanho());
+        Double totalDisco1 = disco1 != null ? Util.formatarParaDouble(looca.getGrupoDeDiscos().getVolumes().get(0).getTotal()) : null;
         Double totalDisco2 = disco2 != null ? Util.formatarParaDouble(disco2.getTamanho()) : null;
         Double totalDisco3 = disco3 != null ? Util.formatarParaDouble(disco3.getTamanho()) : null;
         
@@ -71,8 +71,8 @@ public class MaquinasService {
         maquina.setStatusSistema(1);
         
         maquina.setCpuMetrica(90.0);
-        maquina.setRamMetrica(ramTotal * 0.85);
-        maquina.setGatilhoDisco1(totalDisco1 * 0.7);
+        maquina.setRamMetrica(ramTotal * 0.95);
+        maquina.setGatilhoDisco1(totalDisco1 * 0.9);
         maquina.setGatilhoDisco2(totalDisco2 == null ? null : totalDisco2 * 0.70);
         maquina.setGatilhoDisco3(totalDisco3 == null ? null : totalDisco3 * 0.70);
         
