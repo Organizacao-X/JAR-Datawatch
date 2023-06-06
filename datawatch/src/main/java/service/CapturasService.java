@@ -51,7 +51,12 @@ public class CapturasService {
         captura.setCpuUso(looca.getProcessador().getUso());
         captura.setDataHora(LocalDateTime.now());
         captura.setTemperatura(10 + Math.random() * looca.getProcessador().getUso());
-        captura.setRamUso(Util.formatarParaDouble(looca.getMemoria().getEmUso()));
+        Double ramUso = Util.formatarParaDouble(looca.getMemoria().getEmUso());
+        if (ramUso > 32.0) {
+            captura.setRamUso(ramUso/1000);
+        } else {
+            captura.setRamUso(ramUso);
+        }
         captura.setRedeDownload(Util.formatarParaDouble(ri.get(ri.size() -1).getBytesRecebidos()));
         captura.setRedeUpload(Util.formatarParaDouble(ri.get(ri.size() - 1).getBytesEnviados()));
         
