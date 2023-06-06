@@ -9,6 +9,7 @@ import com.github.britooo.looca.api.group.rede.RedeInterface;
 import com.github.britooo.looca.api.util.Conversor;
 import config.log.Log;
 import config.log.LogInsert;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -340,7 +341,13 @@ public class SistemaDatawatch extends javax.swing.JFrame {
                         CapturasService.insertCapturaMySQL(captura);
                         logInsert.criarLog();
                         
-                        LogService.criarAlerta(maquina);
+                        try {
+                            LogService.criarAlerta(maquina);
+                        } catch (IOException ex) {
+                            Logger.getLogger(SistemaDatawatch.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(SistemaDatawatch.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         
                         try {
                             RebootService.rebootar(maquina.getIdMaquina());

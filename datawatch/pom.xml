@@ -23,7 +23,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>app.TelaLogin</mainClass>
+                            <mainClass>app.Datawatch</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

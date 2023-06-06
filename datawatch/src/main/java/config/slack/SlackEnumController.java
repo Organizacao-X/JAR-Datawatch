@@ -83,7 +83,7 @@ public class SlackEnumController {
                 mensagem = String.format(" :red_circle: *[WARNING]* Uso do processador [%s] ultrapassou o limite estipulado na máquina [%s]\t\t", nomeComponente, nomeMaquina);
                 break;
             case 11:
-                mensagem = String.format(" :red_circle: *[WARNING]* Uso da RAM ultrapassou o limite estipulado na máquina\t\t", nomeMaquina);
+                mensagem = String.format(" :red_circle: *[WARNING]* Uso da RAM ultrapassou o limite estipulado na máquina [%s]\t\t", nomeMaquina);
                 break;
             case 12:
                 mensagem = String.format(" :red_circle: *[WARNING]* O uso do disco [%s] ultrapassou o limite estipulado na máquina [%s]\t\t", nomeComponente, nomeMaquina);
